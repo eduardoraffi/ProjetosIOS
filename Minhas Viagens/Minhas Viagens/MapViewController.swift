@@ -6,7 +6,7 @@
 //  Copyright © 2017 Eduardo Jeronymo Goulart Raffi. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import MapKit
 
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
@@ -16,6 +16,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     override func viewDidLoad() {
         super.viewDidLoad()
         configurateLocalizationManager()
+        
+        let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(MapViewController.mark(gesture:) ))
+        gestureRecognizer.minimumPressDuration = 2
+    }
+    
+    
+    func mark(gesture: UIGestureRecognizer) {
+        print("Pressionado")
     }
     
     func configurateLocalizationManager() {
