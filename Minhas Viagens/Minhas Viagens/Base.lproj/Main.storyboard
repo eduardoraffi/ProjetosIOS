@@ -64,6 +64,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="map" destination="gOA-Ux-RgM" id="W3a-P8-ifr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d87-3k-Dfh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
