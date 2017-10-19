@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>MapasEGeolocalizacao.xcscheme</key>
+		<key>Minhas viagens.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,17 +12,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>E4E2AF401F56DF2B00CA70BF</key>
+		<key>E4A137C61F99066600D4DE13</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E4E2AF541F56DF2C00CA70BF</key>
+		<key>E4A137DA1F99066700D4DE13</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E4E2AF5F1F56DF2C00CA70BF</key>
+		<key>E4A137E51F99066700D4DE13</key>
 		<dict>
 			<key>primary</key>
 			<true/>

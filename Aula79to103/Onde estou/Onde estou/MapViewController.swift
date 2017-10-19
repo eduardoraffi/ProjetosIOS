@@ -9,8 +9,9 @@ import Foundation
 import MapKit
 import UIKit
 
-class zzMapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
+    @IBOutlet weak var mapa: MKMapView!
     @IBOutlet weak var enderecoLabel: UILabel!
     @IBOutlet weak var longitudeLabel: UILabel!
     @IBOutlet weak var latitudeLabel: UILabel!
@@ -53,6 +54,63 @@ class zzMapViewController: UIViewController, MKMapViewDelegate, CLLocationManage
         let regiao: MKCoordinateRegion = MKCoordinateRegionMake(localizacao, areaExibicao)
         
         mapa.setRegion(regiao, animated: true)
+        
+        CLGeocoder().reverseGeocodeLocation(localizacaoUsuario) { (detalhesLocal, erro) in
+            if erro == nil {
+                
+                
+                if let dadosLocal = detalhesLocal?.first {
+                    
+                    var throughFare = ""
+                    if dadosLocal.thoroughfare != nil {
+                        throughFare = dadosLocal.thoroughfare!
+                    }//throughfare means avenue
+                    
+                    var subThroughFare = ""
+                    if dadosLocal.subThoroughfare != nil {
+                        subThroughFare = dadosLocal.thoroughfare!
+                    }
+                    
+                    var locality = ""
+                    if dadosLocal.locality != nil {
+                        locality = dadosLocal.locality!
+                    }
+                    
+                    var subLocality = ""
+                    if dadosLocal.subLocality != nil {
+                        subLocality = dadosLocal.subLocality!
+                    }
+                    
+                    var postalCode = ""
+                    if dadosLocal.postalCode != nil {
+                        postalCode = dadosLocal.postalCode!
+                    }
+                    
+                    var country = ""
+                    if dadosLocal.country != nil {
+                        country = dadosLocal.country!
+                    }
+                    
+                    var administrativeArea = ""
+                    if dadosLocal.administrativeArea != nil {
+                        administrativeArea = dadosLocal.administrativeArea!
+                    }
+                    
+                    var subAdministrativeArea = ""
+                    if dadosLocal.subAdministrativeArea != nil {
+                        subAdministrativeArea = dadosLocal.subAdministrativeArea!
+                    }
+                    
+                    self.enderecoLabel.text = throughFare + " - "
+                                              + subThroughFare + " / "
+                                              + locality + " / "
+                                              + country
+                    
+                }
+            } else {
+                    print(erro)
+            }
+        }
         
     }
 

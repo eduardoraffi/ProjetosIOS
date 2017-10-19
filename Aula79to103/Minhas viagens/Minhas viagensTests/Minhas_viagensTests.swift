@@ -1,15 +1,15 @@
 //
-//  MapasEGeolocalizacaoTests.swift
-//  MapasEGeolocalizacaoTests
+//  Minhas_viagensTests.swift
+//  Minhas viagensTests
 //
-//  Created by Eduardo Jeronymo Goulart Raffi on 30/08/17.
+//  Created by Eduardo Jeronymo Goulart Raffi on 19/10/17.
 //  Copyright © 2017 Eduardo Jeronymo Goulart Raffi. All rights reserved.
 //
 
 import XCTest
-@testable import MapasEGeolocalizacao
+@testable import Minhas_viagens
 
-class MapasEGeolocalizacaoTests: XCTestCase {
+class Minhas_viagensTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

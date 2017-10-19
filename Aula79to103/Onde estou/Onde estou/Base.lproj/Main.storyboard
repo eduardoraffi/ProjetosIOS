@@ -155,12 +155,9 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EoV-iP-vO8">
-                                        <rect key="frame" x="225" y="89" width="134" height="21"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="21" id="StJ-TM-50P"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EoV-iP-vO8">
+                                        <rect key="frame" x="225" y="89" width="134" height="81"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -185,6 +182,7 @@
                                     <constraint firstItem="JGw-zP-4xP" firstAttribute="leading" secondItem="rvI-nJ-3Ve" secondAttribute="leading" constant="140" id="dvh-2B-z3f"/>
                                     <constraint firstItem="HbW-WK-SOY" firstAttribute="leading" secondItem="rvI-nJ-3Ve" secondAttribute="leading" constant="35" id="hYT-V6-uir"/>
                                     <constraint firstItem="Uj0-8d-jdb" firstAttribute="leading" secondItem="JGw-zP-4xP" secondAttribute="trailing" id="inu-CD-xUv"/>
+                                    <constraint firstAttribute="bottom" secondItem="EoV-iP-vO8" secondAttribute="bottom" constant="5" id="lWZ-Qz-pss"/>
                                     <constraint firstItem="XW2-vP-Wb8" firstAttribute="leading" secondItem="rvI-nJ-3Ve" secondAttribute="leading" constant="25" id="mAc-Aq-9dy"/>
                                     <constraint firstAttribute="trailing" secondItem="Uj0-8d-jdb" secondAttribute="trailing" constant="16" id="tKr-Z2-TFi"/>
                                     <constraint firstItem="HbW-WK-SOY" firstAttribute="top" secondItem="XW2-vP-Wb8" secondAttribute="bottom" constant="20" id="yUc-OY-quT"/>
@@ -212,6 +210,7 @@
                         <outlet property="enderecoLabel" destination="EoV-iP-vO8" id="SXJ-kP-EKr"/>
                         <outlet property="latitudeLabel" destination="Uj0-8d-jdb" id="ud0-V1-1fQ"/>
                         <outlet property="longitudeLabel" destination="Vm4-VI-zkT" id="Ynb-U9-C4d"/>
+                        <outlet property="mapa" destination="2NL-1E-6cK" id="Ikb-0B-r96"/>
                         <outlet property="velocidadeLabel" destination="HbW-WK-SOY" id="Rqr-65-Jud"/>
                     </connections>
                 </viewController>

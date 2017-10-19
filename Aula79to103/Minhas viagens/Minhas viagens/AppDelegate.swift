@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  MapasEGeolocalizacao
+//  Minhas viagens
 //
-//  Created by Eduardo Jeronymo Goulart Raffi on 30/08/17.
+//  Created by Eduardo Jeronymo Goulart Raffi on 19/10/17.
 //  Copyright © 2017 Eduardo Jeronymo Goulart Raffi. All rights reserved.
 //
 

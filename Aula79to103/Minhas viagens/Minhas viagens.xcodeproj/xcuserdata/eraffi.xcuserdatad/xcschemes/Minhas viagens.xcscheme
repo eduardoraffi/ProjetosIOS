@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E4E2AF401F56DF2B00CA70BF"
-               BuildableName = "MapasEGeolocalizacao.app"
-               BlueprintName = "MapasEGeolocalizacao"
-               ReferencedContainer = "container:MapasEGeolocalizacao.xcodeproj">
+               BlueprintIdentifier = "E4A137C61F99066600D4DE13"
+               BuildableName = "Minhas viagens.app"
+               BlueprintName = "Minhas viagens"
+               ReferencedContainer = "container:Minhas viagens.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,30 +32,30 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E4E2AF541F56DF2C00CA70BF"
-               BuildableName = "MapasEGeolocalizacaoTests.xctest"
-               BlueprintName = "MapasEGeolocalizacaoTests"
-               ReferencedContainer = "container:MapasEGeolocalizacao.xcodeproj">
+               BlueprintIdentifier = "E4A137DA1F99066700D4DE13"
+               BuildableName = "Minhas viagensTests.xctest"
+               BlueprintName = "Minhas viagensTests"
+               ReferencedContainer = "container:Minhas viagens.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E4E2AF5F1F56DF2C00CA70BF"
-               BuildableName = "MapasEGeolocalizacaoUITests.xctest"
-               BlueprintName = "MapasEGeolocalizacaoUITests"
-               ReferencedContainer = "container:MapasEGeolocalizacao.xcodeproj">
+               BlueprintIdentifier = "E4A137E51F99066700D4DE13"
+               BuildableName = "Minhas viagensUITests.xctest"
+               BlueprintName = "Minhas viagensUITests"
+               ReferencedContainer = "container:Minhas viagens.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E4E2AF401F56DF2B00CA70BF"
-            BuildableName = "MapasEGeolocalizacao.app"
-            BlueprintName = "MapasEGeolocalizacao"
-            ReferencedContainer = "container:MapasEGeolocalizacao.xcodeproj">
+            BlueprintIdentifier = "E4A137C61F99066600D4DE13"
+            BuildableName = "Minhas viagens.app"
+            BlueprintName = "Minhas viagens"
+            ReferencedContainer = "container:Minhas viagens.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -75,10 +75,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E4E2AF401F56DF2B00CA70BF"
-            BuildableName = "MapasEGeolocalizacao.app"
-            BlueprintName = "MapasEGeolocalizacao"
-            ReferencedContainer = "container:MapasEGeolocalizacao.xcodeproj">
+            BlueprintIdentifier = "E4A137C61F99066600D4DE13"
+            BuildableName = "Minhas viagens.app"
+            BlueprintName = "Minhas viagens"
+            ReferencedContainer = "container:Minhas viagens.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -94,10 +94,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E4E2AF401F56DF2B00CA70BF"
-            BuildableName = "MapasEGeolocalizacao.app"
-            BlueprintName = "MapasEGeolocalizacao"
-            ReferencedContainer = "container:MapasEGeolocalizacao.xcodeproj">
+            BlueprintIdentifier = "E4A137C61F99066600D4DE13"
+            BuildableName = "Minhas viagens.app"
+            BlueprintName = "Minhas viagens"
+            ReferencedContainer = "container:Minhas viagens.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
