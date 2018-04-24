@@ -1,0 +1,597 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E24F82A0208F5E53004FA84C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24F829F208F5E53004FA84C /* AppDelegate.swift */; };
+		E24F82A2208F5E53004FA84C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24F82A1208F5E53004FA84C /* ViewController.swift */; };
+		E24F82A5208F5E53004FA84C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E24F82A3208F5E53004FA84C /* Main.storyboard */; };
+		E24F82A7208F5E6A004FA84C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E24F82A6208F5E6A004FA84C /* Assets.xcassets */; };
+		E24F82AA208F5E6A004FA84C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E24F82A8208F5E6A004FA84C /* LaunchScreen.storyboard */; };
+		E24F82B5208F5E6B004FA84C /* CursoAluraAulasLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24F82B4208F5E6B004FA84C /* CursoAluraAulasLayoutTests.swift */; };
+		E24F82C0208F5E6B004FA84C /* CursoAluraAulasLayoutUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24F82BF208F5E6B004FA84C /* CursoAluraAulasLayoutUITests.swift */; };
+		E2DB1F48208F7BD200737F5D /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DB1F47208F7BD200737F5D /* MainView.swift */; };
+		E2DB1F4A208FA1E100737F5D /* ViagemDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DB1F49208FA1E100737F5D /* ViagemDAO.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E24F82B1208F5E6B004FA84C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E24F8294208F5E51004FA84C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E24F829B208F5E52004FA84C;
+			remoteInfo = CursoAluraAulasLayout;
+		};
+		E24F82BC208F5E6B004FA84C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E24F8294208F5E51004FA84C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E24F829B208F5E52004FA84C;
+			remoteInfo = CursoAluraAulasLayout;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		E24F829C208F5E52004FA84C /* CursoAluraAulasLayout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CursoAluraAulasLayout.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E24F829F208F5E53004FA84C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E24F82A1208F5E53004FA84C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E24F82A4208F5E53004FA84C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E24F82A6208F5E6A004FA84C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E24F82A9208F5E6A004FA84C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E24F82AB208F5E6A004FA84C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E24F82B0208F5E6B004FA84C /* CursoAluraAulasLayoutTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CursoAluraAulasLayoutTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E24F82B4208F5E6B004FA84C /* CursoAluraAulasLayoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CursoAluraAulasLayoutTests.swift; sourceTree = "<group>"; };
+		E24F82B6208F5E6B004FA84C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E24F82BB208F5E6B004FA84C /* CursoAluraAulasLayoutUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CursoAluraAulasLayoutUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E24F82BF208F5E6B004FA84C /* CursoAluraAulasLayoutUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CursoAluraAulasLayoutUITests.swift; sourceTree = "<group>"; };
+		E24F82C1208F5E6B004FA84C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E2DB1F47208F7BD200737F5D /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		E2DB1F49208FA1E100737F5D /* ViagemDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViagemDAO.swift; path = "../../../../../../../Downloads/Arquivos Projeto/ViagemDAO.swift"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E24F8299208F5E52004FA84C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E24F82AD208F5E6B004FA84C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E24F82B8208F5E6B004FA84C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E24F8293208F5E51004FA84C = {
+			isa = PBXGroup;
+			children = (
+				E24F829E208F5E52004FA84C /* CursoAluraAulasLayout */,
+				E24F82B3208F5E6B004FA84C /* CursoAluraAulasLayoutTests */,
+				E24F82BE208F5E6B004FA84C /* CursoAluraAulasLayoutUITests */,
+				E24F829D208F5E52004FA84C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E24F829D208F5E52004FA84C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E24F829C208F5E52004FA84C /* CursoAluraAulasLayout.app */,
+				E24F82B0208F5E6B004FA84C /* CursoAluraAulasLayoutTests.xctest */,
+				E24F82BB208F5E6B004FA84C /* CursoAluraAulasLayoutUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E24F829E208F5E52004FA84C /* CursoAluraAulasLayout */ = {
+			isa = PBXGroup;
+			children = (
+				E2DB1F49208FA1E100737F5D /* ViagemDAO.swift */,
+				E24F829F208F5E53004FA84C /* AppDelegate.swift */,
+				E24F82A1208F5E53004FA84C /* ViewController.swift */,
+				E24F82A3208F5E53004FA84C /* Main.storyboard */,
+				E24F82A6208F5E6A004FA84C /* Assets.xcassets */,
+				E24F82A8208F5E6A004FA84C /* LaunchScreen.storyboard */,
+				E24F82AB208F5E6A004FA84C /* Info.plist */,
+				E2DB1F47208F7BD200737F5D /* MainView.swift */,
+			);
+			path = CursoAluraAulasLayout;
+			sourceTree = "<group>";
+		};
+		E24F82B3208F5E6B004FA84C /* CursoAluraAulasLayoutTests */ = {
+			isa = PBXGroup;
+			children = (
+				E24F82B4208F5E6B004FA84C /* CursoAluraAulasLayoutTests.swift */,
+				E24F82B6208F5E6B004FA84C /* Info.plist */,
+			);
+			path = CursoAluraAulasLayoutTests;
+			sourceTree = "<group>";
+		};
+		E24F82BE208F5E6B004FA84C /* CursoAluraAulasLayoutUITests */ = {
+			isa = PBXGroup;
+			children = (
+				E24F82BF208F5E6B004FA84C /* CursoAluraAulasLayoutUITests.swift */,
+				E24F82C1208F5E6B004FA84C /* Info.plist */,
+			);
+			path = CursoAluraAulasLayoutUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E24F829B208F5E52004FA84C /* CursoAluraAulasLayout */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E24F82C4208F5E6B004FA84C /* Build configuration list for PBXNativeTarget "CursoAluraAulasLayout" */;
+			buildPhases = (
+				E24F8298208F5E52004FA84C /* Sources */,
+				E24F8299208F5E52004FA84C /* Frameworks */,
+				E24F829A208F5E52004FA84C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CursoAluraAulasLayout;
+			productName = CursoAluraAulasLayout;
+			productReference = E24F829C208F5E52004FA84C /* CursoAluraAulasLayout.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E24F82AF208F5E6B004FA84C /* CursoAluraAulasLayoutTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E24F82C7208F5E6B004FA84C /* Build configuration list for PBXNativeTarget "CursoAluraAulasLayoutTests" */;
+			buildPhases = (
+				E24F82AC208F5E6B004FA84C /* Sources */,
+				E24F82AD208F5E6B004FA84C /* Frameworks */,
+				E24F82AE208F5E6B004FA84C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E24F82B2208F5E6B004FA84C /* PBXTargetDependency */,
+			);
+			name = CursoAluraAulasLayoutTests;
+			productName = CursoAluraAulasLayoutTests;
+			productReference = E24F82B0208F5E6B004FA84C /* CursoAluraAulasLayoutTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E24F82BA208F5E6B004FA84C /* CursoAluraAulasLayoutUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E24F82CA208F5E6B004FA84C /* Build configuration list for PBXNativeTarget "CursoAluraAulasLayoutUITests" */;
+			buildPhases = (
+				E24F82B7208F5E6B004FA84C /* Sources */,
+				E24F82B8208F5E6B004FA84C /* Frameworks */,
+				E24F82B9208F5E6B004FA84C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E24F82BD208F5E6B004FA84C /* PBXTargetDependency */,
+			);
+			name = CursoAluraAulasLayoutUITests;
+			productName = CursoAluraAulasLayoutUITests;
+			productReference = E24F82BB208F5E6B004FA84C /* CursoAluraAulasLayoutUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E24F8294208F5E51004FA84C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = "Hst Dev";
+				TargetAttributes = {
+					E24F829B208F5E52004FA84C = {
+						CreatedOnToolsVersion = 9.3;
+					};
+					E24F82AF208F5E6B004FA84C = {
+						CreatedOnToolsVersion = 9.3;
+						TestTargetID = E24F829B208F5E52004FA84C;
+					};
+					E24F82BA208F5E6B004FA84C = {
+						CreatedOnToolsVersion = 9.3;
+						TestTargetID = E24F829B208F5E52004FA84C;
+					};
+				};
+			};
+			buildConfigurationList = E24F8297208F5E51004FA84C /* Build configuration list for PBXProject "CursoAluraAulasLayout" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E24F8293208F5E51004FA84C;
+			productRefGroup = E24F829D208F5E52004FA84C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E24F829B208F5E52004FA84C /* CursoAluraAulasLayout */,
+				E24F82AF208F5E6B004FA84C /* CursoAluraAulasLayoutTests */,
+				E24F82BA208F5E6B004FA84C /* CursoAluraAulasLayoutUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E24F829A208F5E52004FA84C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E24F82AA208F5E6A004FA84C /* LaunchScreen.storyboard in Resources */,
+				E24F82A7208F5E6A004FA84C /* Assets.xcassets in Resources */,
+				E24F82A5208F5E53004FA84C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E24F82AE208F5E6B004FA84C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E24F82B9208F5E6B004FA84C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E24F8298208F5E52004FA84C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E24F82A2208F5E53004FA84C /* ViewController.swift in Sources */,
+				E2DB1F48208F7BD200737F5D /* MainView.swift in Sources */,
+				E24F82A0208F5E53004FA84C /* AppDelegate.swift in Sources */,
+				E2DB1F4A208FA1E100737F5D /* ViagemDAO.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E24F82AC208F5E6B004FA84C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E24F82B5208F5E6B004FA84C /* CursoAluraAulasLayoutTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E24F82B7208F5E6B004FA84C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E24F82C0208F5E6B004FA84C /* CursoAluraAulasLayoutUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E24F82B2208F5E6B004FA84C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E24F829B208F5E52004FA84C /* CursoAluraAulasLayout */;
+			targetProxy = E24F82B1208F5E6B004FA84C /* PBXContainerItemProxy */;
+		};
+		E24F82BD208F5E6B004FA84C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E24F829B208F5E52004FA84C /* CursoAluraAulasLayout */;
+			targetProxy = E24F82BC208F5E6B004FA84C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E24F82A3208F5E53004FA84C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E24F82A4208F5E53004FA84C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E24F82A8208F5E6A004FA84C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E24F82A9208F5E6A004FA84C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E24F82C2208F5E6B004FA84C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E24F82C3208F5E6B004FA84C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E24F82C5208F5E6B004FA84C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8UPB7FYJ5Z;
+				INFOPLIST_FILE = CursoAluraAulasLayout/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.hst.CursoAluraAulasLayout;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E24F82C6208F5E6B004FA84C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8UPB7FYJ5Z;
+				INFOPLIST_FILE = CursoAluraAulasLayout/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.hst.CursoAluraAulasLayout;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		E24F82C8208F5E6B004FA84C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8UPB7FYJ5Z;
+				INFOPLIST_FILE = CursoAluraAulasLayoutTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.hst.CursoAluraAulasLayoutTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CursoAluraAulasLayout.app/CursoAluraAulasLayout";
+			};
+			name = Debug;
+		};
+		E24F82C9208F5E6B004FA84C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8UPB7FYJ5Z;
+				INFOPLIST_FILE = CursoAluraAulasLayoutTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.hst.CursoAluraAulasLayoutTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CursoAluraAulasLayout.app/CursoAluraAulasLayout";
+			};
+			name = Release;
+		};
+		E24F82CB208F5E6B004FA84C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8UPB7FYJ5Z;
+				INFOPLIST_FILE = CursoAluraAulasLayoutUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.hst.CursoAluraAulasLayoutUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CursoAluraAulasLayout;
+			};
+			name = Debug;
+		};
+		E24F82CC208F5E6B004FA84C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8UPB7FYJ5Z;
+				INFOPLIST_FILE = CursoAluraAulasLayoutUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.hst.CursoAluraAulasLayoutUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CursoAluraAulasLayout;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E24F8297208F5E51004FA84C /* Build configuration list for PBXProject "CursoAluraAulasLayout" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E24F82C2208F5E6B004FA84C /* Debug */,
+				E24F82C3208F5E6B004FA84C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E24F82C4208F5E6B004FA84C /* Build configuration list for PBXNativeTarget "CursoAluraAulasLayout" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E24F82C5208F5E6B004FA84C /* Debug */,
+				E24F82C6208F5E6B004FA84C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E24F82C7208F5E6B004FA84C /* Build configuration list for PBXNativeTarget "CursoAluraAulasLayoutTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E24F82C8208F5E6B004FA84C /* Debug */,
+				E24F82C9208F5E6B004FA84C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E24F82CA208F5E6B004FA84C /* Build configuration list for PBXNativeTarget "CursoAluraAulasLayoutUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E24F82CB208F5E6B004FA84C /* Debug */,
+				E24F82CC208F5E6B004FA84C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E24F8294208F5E51004FA84C /* Project object */;
+}
