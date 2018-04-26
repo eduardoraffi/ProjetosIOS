@@ -8,19 +8,17 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     
-    @IBOutlet weak var labelCidadeDestino: UILabel!
-    @IBOutlet weak var labelPreco: UILabel!
-    @IBOutlet weak var labelDias: UILabel!
-    @IBOutlet weak var imagemLugar: UIImageView!
+   
     @IBOutlet weak var tableViewTelaInicial: UITableView!
     
-    let teste:Array<String> = ["Rio de janeiro", "São Paulo"]
+    let listaViagens:Array<Viagem> = ViagemDAO().retornaTodasAsViagens()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableViewTelaInicial.delegate = self
         self.tableViewTelaInicial.dataSource = self
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -31,12 +29,18 @@ class ViewController: UIViewController, UITableViewDataSource {
     }
 
    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellAluraViagens", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellAluraViagens", for: indexPath) as! TableViewCell
+        let viagemAtual = listaViagens[indexPath.row]
+        cell.labelTitulo.text = viagemAtual.titulo
+    
+    cell.imagemDestino.image = UIImage(named: viagemAtual.caminhoDaImagem)
+        cell.labelDias.text = "\(viagemAtual.quantidadeDedias) Dias"
+        cell.labelPreco.text = viagemAtual.preco
         return cell
    }
 
    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return teste.count
+        return listaViagens.count
    }
 
     

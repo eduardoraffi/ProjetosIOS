@@ -16,6 +16,8 @@
 		E24F82C0208F5E6B004FA84C /* CursoAluraAulasLayoutUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24F82BF208F5E6B004FA84C /* CursoAluraAulasLayoutUITests.swift */; };
 		E2DB1F48208F7BD200737F5D /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DB1F47208F7BD200737F5D /* MainView.swift */; };
 		E2DB1F4A208FA1E100737F5D /* ViagemDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DB1F49208FA1E100737F5D /* ViagemDAO.swift */; };
+		E2DB7E7B2090B6AB00F355CD /* Viagem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DB7E7A2090B6AB00F355CD /* Viagem.swift */; };
+		E2DB7E7D2090C02600F355CD /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DB7E7C2090C02600F355CD /* TableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		E24F82C1208F5E6B004FA84C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E2DB1F47208F7BD200737F5D /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		E2DB1F49208FA1E100737F5D /* ViagemDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViagemDAO.swift; path = "../../../../../../../Downloads/Arquivos Projeto/ViagemDAO.swift"; sourceTree = "<group>"; };
+		E2DB7E7A2090B6AB00F355CD /* Viagem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Viagem.swift; sourceTree = "<group>"; };
+		E2DB7E7C2090C02600F355CD /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +113,8 @@
 				E24F82A8208F5E6A004FA84C /* LaunchScreen.storyboard */,
 				E24F82AB208F5E6A004FA84C /* Info.plist */,
 				E2DB1F47208F7BD200737F5D /* MainView.swift */,
+				E2DB7E7A2090B6AB00F355CD /* Viagem.swift */,
+				E2DB7E7C2090C02600F355CD /* TableViewCell.swift */,
 			);
 			path = CursoAluraAulasLayout;
 			sourceTree = "<group>";
@@ -265,7 +271,9 @@
 				E24F82A2208F5E53004FA84C /* ViewController.swift in Sources */,
 				E2DB1F48208F7BD200737F5D /* MainView.swift in Sources */,
 				E24F82A0208F5E53004FA84C /* AppDelegate.swift in Sources */,
+				E2DB7E7D2090C02600F355CD /* TableViewCell.swift in Sources */,
 				E2DB1F4A208FA1E100737F5D /* ViagemDAO.swift in Sources */,
+				E2DB7E7B2090B6AB00F355CD /* Viagem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -88,7 +88,7 @@
                                 <rect key="frame" x="0.0" y="200" width="375" height="467"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellAluraViagens" rowHeight="200" id="pv0-52-SIP">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellAluraViagens" rowHeight="200" id="pv0-52-SIP" customClass="TableViewCell" customModule="CursoAluraAulasLayout" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pv0-52-SIP" id="Gvg-SM-0HT">
@@ -102,19 +102,22 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="x11-XP-vSR">
-                                                    <rect key="frame" x="5" y="30.5" width="310" height="133"/>
+                                                    <rect key="frame" x="5" y="30.5" width="365" height="133"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="133" id="Px9-Qo-C5z"/>
+                                                    </constraints>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Drd-YU-J7b">
-                                                    <rect key="frame" x="10" y="168.5" width="300" height="20.5"/>
+                                                    <rect key="frame" x="10" y="168.5" width="355" height="20.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dias" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ev1-xG-3sS">
-                                                            <rect key="frame" x="0.0" y="0.0" width="150" height="20.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="177.5" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" white="0.52957993659420288" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preço" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k71-zQ-aGK">
-                                                            <rect key="frame" x="150" y="0.0" width="150" height="20.5"/>
+                                                            <rect key="frame" x="177.5" y="0.0" width="177.5" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" white="0.52957993659420288" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -139,6 +142,12 @@
                                                 <constraint firstItem="x11-XP-vSR" firstAttribute="top" secondItem="vk6-z4-aTb" secondAttribute="bottom" constant="5" id="ytc-MJ-ouI"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="imagemDestino" destination="x11-XP-vSR" id="Mq6-8Y-vS6"/>
+                                            <outlet property="labelDias" destination="ev1-xG-3sS" id="ztu-Fo-Jr1"/>
+                                            <outlet property="labelPreco" destination="k71-zQ-aGK" id="RHq-AZ-xbX"/>
+                                            <outlet property="labelTitulo" destination="vk6-z4-aTb" id="Tkm-I0-Wky"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
