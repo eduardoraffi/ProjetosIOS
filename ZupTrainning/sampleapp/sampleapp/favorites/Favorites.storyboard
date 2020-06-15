@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AGx-qO-ix4">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Favorites View Controller-->
+        <scene sceneID="bZQ-zh-dW9">
+            <objects>
+                <viewController id="AGx-qO-ix4" customClass="FavoritesViewController" customModule="sampleapp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DwE-Gv-cMg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Seus filmes favoritos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oQD-uA-szE">
+                                <rect key="frame" x="16" y="76" width="398" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="K5H-qd-nQA">
+                                <rect key="frame" x="16" y="128.5" width="382" height="684.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="AGx-qO-ix4" id="AqN-yH-iC5"/>
+                                    <outlet property="delegate" destination="AGx-qO-ix4" id="uwy-8i-YB2"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.11026554399999999" green="0.11026554399999999" blue="0.11026554399999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="yzX-ek-m9G" firstAttribute="trailing" secondItem="K5H-qd-nQA" secondAttribute="trailing" constant="16" id="9nJ-h3-oSG"/>
+                            <constraint firstItem="K5H-qd-nQA" firstAttribute="top" secondItem="oQD-uA-szE" secondAttribute="bottom" constant="32" id="LZ4-td-1WQ"/>
+                            <constraint firstItem="yzX-ek-m9G" firstAttribute="trailing" secondItem="oQD-uA-szE" secondAttribute="trailing" id="VgL-xz-giE"/>
+                            <constraint firstItem="oQD-uA-szE" firstAttribute="leading" secondItem="yzX-ek-m9G" secondAttribute="leading" constant="16" id="Vgp-qR-o7T"/>
+                            <constraint firstItem="oQD-uA-szE" firstAttribute="top" secondItem="yzX-ek-m9G" secondAttribute="top" constant="32" id="YdI-aH-sP9"/>
+                            <constraint firstItem="K5H-qd-nQA" firstAttribute="leading" secondItem="yzX-ek-m9G" secondAttribute="leading" constant="16" id="jVH-u6-djb"/>
+                            <constraint firstItem="yzX-ek-m9G" firstAttribute="bottom" secondItem="K5H-qd-nQA" secondAttribute="bottom" id="tvj-Ht-nvZ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="yzX-ek-m9G"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="heart" catalog="system" id="Fca-hN-IER"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="favoritesLabel" destination="oQD-uA-szE" id="clQ-3s-Eaf"/>
+                        <outlet property="favoritesTableView" destination="K5H-qd-nQA" id="29H-ud-sEe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="clJ-SE-8Hk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="284" y="-263"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="heart" catalog="system" width="128" height="109"/>
+    </resources>
+</document>
