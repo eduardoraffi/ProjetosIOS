@@ -14,6 +14,7 @@ class HomeViewController: UIViewController{
     
     @IBOutlet weak var homeTableView: UITableView!
     @IBOutlet weak var homeCollectionView: UICollectionView!
+    @IBOutlet var mainView: UIView!
     
     let kNibName = "HomeCardViewCell"
     let kCollectionNames = "FilterCollectionViewCell"
@@ -22,8 +23,16 @@ class HomeViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        externalRequest()
         initializeFilterBar()
         initializeTableView()
+    }
+    
+    private func externalRequest(){
+        let xib = Bundle.main.loadNibNamed("LoadingView", owner: self, options: nil)?.first as! LoadingView
+        
+        xib.cantConnectView.isHidden = false
+        mainView.addSubview(xib)
     }
     
     func initializeFilterBar(){
@@ -101,6 +110,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
         let secondVC = storyboard.instantiateViewController(withIdentifier: "DetailsStoryboard") as? DetailsViewController
         secondVC?.details = rowDetails
         secondVC?.moviesData = mockInfo
-        self.present(secondVC!, animated:true, completion:nil)
+        self.navigationController?.show(secondVC!, sender: self)
+        
+//        present(secondVC!, animated:true, completion:nil)
     }
 }
