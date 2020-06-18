@@ -36,6 +36,7 @@ class DetailsViewController: UIViewController {
         initializeGestures()
         populateView()
         let xib = Bundle.main.loadNibNamed("DetailsView", owner: self, options: nil)?.first as! DetailsView
+        
         xib.bannerImageView.image = moviesData[0].movieImage
         xib.gradeTextfield.text = moviesData[0].rate
         xib.titleTextField.text = moviesData[0].title
@@ -44,16 +45,16 @@ class DetailsViewController: UIViewController {
         xib.countryTextField.text = moviesData[0].country
         xib.detailsTextView.text = moviesData[0].description
         let xib2 = Bundle.main.loadNibNamed("DetailsView", owner: self, options: nil)?.first as! DetailsView
-        xib2.bannerImageView.image = moviesData[0].movieImage
-        xib2.gradeTextfield.text = moviesData[0].rate
-        xib2.titleTextField.text = moviesData[0].title
-        xib2.favoriteImageView.image = moviesData[0].favoriteImage
-        xib2.genreTextField.text = moviesData[0].genre
-        xib2.countryTextField.text = moviesData[0].country
-        xib2.detailsTextView.text = moviesData[0].description
-//        xib.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 1000), for: NSLayoutConstraint.Axis.vertical);
-//        xib2.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 1000), for: NSLayoutConstraint.Axis.vertical);
+        xib2.bannerImageView.image = moviesData[1].movieImage
+        xib2.gradeTextfield.text = moviesData[1].rate
+        xib2.titleTextField.text = moviesData[1].title
+        xib2.favoriteImageView.image = moviesData[1].favoriteImage
+        xib2.genreTextField.text = moviesData[1].genre
+        xib2.countryTextField.text = moviesData[1].country
+        xib2.detailsTextView.text = moviesData[1].description
+        
         moreOptionsStackView.addArrangedSubview(xib)
+        
         moreOptionsStackView.addArrangedSubview(xib2)
     }
     
@@ -68,14 +69,15 @@ class DetailsViewController: UIViewController {
     }
     
     private func populateView(){
-        bannerImageView.image = details.movieImage
+        bannerImageView.image = details.movieShowcaseBanner
         posterImageView.image = details.movieImage
         titleLabel.text = details.title
+        genreLabel.text = details.genre
         countrygenreLabel.text = details.country
         ratingTextField.text = details.rate
         ratingAverageLabel.text = details.rate + "/10"
         durationTimeLabel.text = "\(details.movieDuration) min"
-        descriptionTextView.text = details.description + "DHAEIUDHAUEDKJAEJNDIUAEHNDIUJAEIUDJAEUIDJUIAEJDIUAEJDIUAEHDIUAEFIUAEHFIUAEFIUANEIUFABDHAEIUDHAUEDKJAEJNDIUAEHNDIUJAEIUDJAEUIDJUIAEJDIUAEJDIUAEHDIUAEFIUAEHFIUAEFIUANEIUFABDHAEIUDHAUEDKJAEJNDIUAEHNDIUJAEIUDJAEUIDJUIAEJDIUAEJDIUAEHDIUAEFIUAEHFIUAEFIUANEIUFABDHAEIUDHAUEDKJAEJNDIUAEHNDIUJAEIUDJAEUIDJUIAEJDIUAEJDIUAEHDIUAEFIUAEHFIUAEFIUANEIUFABDHAEIUDHAUEDKJAEJNDIUAEHNDIUJAEIUDJAEUIDJUIAEJDIUAEJDIUAEHDIUAEFIUAEHFIUAEFIUANEIUFABDHAEIUDHAUEDKJAEJNDIUAEHNDIUJAEIUDJAEUIDJUIAEJDIUAEJDIUAEHDIUAEFIUAEHFIUAEFIUANEIUFABDHAEIUDHAUEDKJAEJNDIUAEHNDIUJAEIUDJAEUIDJUIAEJDIUAEJDIUAEHDIUAEFIUAEHFIUAEFIUANEIUFABDHAEIUDHAUEDKJAEJNDIUAEHNDIUJAEIUDJAEUIDJUIAEJDIUAEJDIUAEHDIUAEFIUAEHFIUAEFIUANEIUFABDHAEIUDHAUEDKJAEJNDIUAEHNDIUJAEIUDJAEUIDJUIAEJDIUAEJDIUAEHDIUAEFIUAEHFIUAEFIUANEIUFABDHAEIUDHAUEDKJAEJNDIUAEHNDIUJAEIUDJAEUIDJUIAEJDIUAEJDIUAEHDIUAEFIUAEHFIUAEFIUANEIUFABDHAEIUDHAUEDKJAEJNDIUAEHNDIUJAEIUDJAEUIDJUIAEJDIUAEJDIUAEHDIUAEFIUAEHFIUAEFIUANEIUFABDHAEIUDHAUEDKJAEJNDIUAEHNDIUJAEIUDJAEUIDJUIAEJDIUAEJDIUAEHDIUAEFIUAEHFIUAEFIUANEIUFABDHAEIUDHAUEDKJAEJNDIUAEHNDIUJAEIUDJAEUIDJUIAEJDIUAEJDIUAEHDIUAEFIUAEHFIUAEFIUANEIUFABDHAEIUDHAUEDKJAEJNDIUAEHNDIUJAEIUDJAEUIDJUIAEJDIUAEJDIUAEHDIUAEFIUAEHFIUAEFIUANEIUFABDHAEIUDHAUEDKJAEJNDIUAEHNDIUJAEIUDJAEUIDJUIAEJDIUAEJDIUAEHDIUAEFIUAEHFIUAEFIUANEIUFABDHAEIUDHAUEDKJAEJNDIUAEHNDIUJAEIUDJAEUIDJUIAEJDIUAEJDIUAEHDIUAEFIUAEHFIUAEFIUANEIUFABDHAEIUDHAUEDKJAEJNDIUAEHNDIUJAEIUDJAEUIDJUIAEJDIUAEJDIUAEHDIUAEFIUAEHFIUAEFIUANEIUFABDHAEIUDHAUEDKJAEJNDIUAEHNDIUJAEIUDJAEUIDJUIAEJDIUAEJDIUAEHDIUAEFIUAEHFIUAEFIUANEIUFABDHAEIUDHAUEDKJAEJNDIUAEHNDIUJAEIUDJAEUIDJUIAEJDIUAEJDIUAEHDIUAEFIUAEHFIUAEFIUANEIUFABDHAEIUDHAUEDKJAEJNDIUAEHNDIUJAEIUDJAEUIDJUIAEJDIUAEJDIUAEHDIUAEFIUAEHFIUAEFIUANEIUFABDHAEIUDHAUEDKJAEJNDIUAEHNDIUJAEIUDJAEUIDJUIAEJDIUAEJDIUAEHDIUAEFIUAEHFIUAEFIUANEIUFAB"
+        descriptionTextView.text = details.description
         voteNumberLabel.text = "Quantidade de votos: \(String(details.numberOfVotes))"
         moreOptionsLabel.text = "Opções semelhantes:"
     }

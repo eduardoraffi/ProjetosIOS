@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 
-
 class HomeViewController: UIViewController{
     
     @IBOutlet weak var homeTableView: UITableView!
@@ -18,100 +17,112 @@ class HomeViewController: UIViewController{
     
     let kNibName = "HomeCardViewCell"
     let kCollectionNames = "FilterCollectionViewCell"
-    var mockInfo : [DetailsModel] = []
-    var mockHeader: [String:Bool] = ["Ação":false, "Drama":false, "Aventura":false, "Suspense":false, "Terror":false, "Comédia":false, "Romance":false]
+    var movieList : [DetailsModel] = []
+    var filterHeader: [[String : Int]:Bool] = [:]
+    var filterHeaderAux: [Int : String] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        externalRequest()
-        initializeFilterBar()
-        initializeTableView()
+        initializeLoadingView()
+        genresRequest()
     }
-    
-    private func externalRequest(){
-        let xib = Bundle.main.loadNibNamed("LoadingView", owner: self, options: nil)?.first as! LoadingView
-        
-        xib.cantConnectView.isHidden = false
-        mainView.addSubview(xib)
-    }
-    
-    func initializeFilterBar(){
-        homeCollectionView.register(UINib.init(nibName: kCollectionNames, bundle: nil), forCellWithReuseIdentifier: kCollectionNames)
 
-        homeCollectionView.allowsMultipleSelection = true
+    private func initializeLoadingView(){
+//        loadingView.tryAgainButton.addTarget(self, action: #selector(self.tryAgainButtonAction), for: .touchDown)
+//        loadingView.isHidden = false
+    }
+
+    @objc private func tryAgainButtonAction(){
+//        loadingView.loadingStatus(true)
+        externalRequest(HttpUtils.FILTER_URL)
+        externalRequest("\(HttpUtils.GENRE_URL)\(String(describing: filterHeaderAux.first!.key))&")
+        
     }
     
-    func initializeTableView(){
+    private func getUrlImage( _ path: inout String) -> UIImage{
+        if !path.contains("/"){
+            path = "/"+path
+        }
+        do{
+            let imageUrl = URL(string: "http://image.tmdb.org/t/p/w780/\(path)")
+            let data = try Data(contentsOf: imageUrl!)
+            return UIImage(data: data)!
+        } catch{
+            return UIImage(named: "lionking")!
+        }
+    }
+    
+    private func initializeFilterBar(){
+        homeCollectionView.register(UINib.init(nibName: kCollectionNames, bundle: nil), forCellWithReuseIdentifier: kCollectionNames)
+        
+        homeCollectionView.allowsMultipleSelection = false
+        homeCollectionView.reloadData()
+    }
+    
+    private func initializeTableView(){
         homeTableView.register(UINib.init(nibName: kNibName, bundle: nil), forCellReuseIdentifier: kNibName)
         homeTableView.backgroundColor = .clear
         
-        // MARK: Mocking data
-        mockInfo.append(DetailsModel(movieShowcaseBanner: UIImage(named: "lionking")!, movieImage: UIImage(named: "lionking")!, favoriteImage: UIImage(systemName: "heart.fill")!, rate: "9.0", title: "O Rei Leão (2019)", genre: "Aventura, Família", country: "United States of America", description: "Filme do gatinho pistola que vinga o pai morto pelo tio mais pistola ainda", evaluatedBy: "IMDB", movieDuration: 118, numberOfVotes: 3500))
-        mockInfo.append(DetailsModel(movieShowcaseBanner: UIImage(named: "lionking")!, movieImage: UIImage(named: "lionking")!, favoriteImage: UIImage(systemName: "heart.fill")!, rate: "9.0", title: "O Gol (2019)", genre: "Aventura, Família", country: "United States of America", description: "Filme do gatinho pistola que vinga o pai morto pelo tio mais pistola ainda", evaluatedBy: "IMDB", movieDuration: 118, numberOfVotes: 3500))
-        mockInfo.append(DetailsModel(movieShowcaseBanner: UIImage(named: "lionking")!, movieImage: UIImage(named: "lionking")!, favoriteImage: UIImage(systemName: "heart.fill")!, rate: "9.0", title: "Puma: A origem (2019)", genre: "Aventura, Família", country: "United States of America", description: "Filme do gatinho pistola que vinga o pai morto pelo tio mais pistola ainda", evaluatedBy: "IMDB", movieDuration: 118, numberOfVotes: 3500))
-        mockInfo.append(DetailsModel(movieShowcaseBanner: UIImage(named: "lionking")!, movieImage: UIImage(named: "lionking")!, favoriteImage: UIImage(systemName: "heart.fill")!, rate: "9.0", title: "Fuscas Brasil (2019)", genre: "Aventura, Família", country: "United States of America", description: "Filme do gatinho pistola que vinga o pai morto pelo tio mais pistola ainda", evaluatedBy: "IMDB", movieDuration: 118, numberOfVotes: 3500))
-        
-        
         homeTableView.reloadData()
     }
-}
-
-extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return mockHeader.count
+    private func genresRequest(){
+        HttpUtils.requestTask(HttpUtils.FILTER_URL) { (genresModel: GenreModel) in
+            self.populateGenreList(genresModel)
+        }
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = homeCollectionView.dequeueReusableCell(withReuseIdentifier: kCollectionNames, for: indexPath) as! FilterCollectionViewCell
-        cell.filterLabel.text = Array(mockHeader.keys)[indexPath.row]
-        cell.filterBackView.layer.cornerRadius = cell.filterLabel.frame.size.height/3
-        
-        return cell
+    public func externalRequest(_ requestType: String){
+        movieList.removeAll()
+        HttpUtils.requestTask(requestType) { (movie: MoviesResponse) in
+            self.populateMoviesList(movie)
+        }
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let value = !Array(mockHeader.values)[indexPath.row]
-        mockHeader[Array(mockHeader.keys)[indexPath.row]] = value
-        // MARK: Atualiza query db
-        //        collectionView.reloadData()
-    }
-}
-
-extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
-    
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return mockInfo.count;
+    private func populateGenreList(_ data: GenreModel){
+        for genre in data.genres{
+            self.filterHeader.updateValue(false, forKey: [genre.name: genre.id])
+            self.filterHeaderAux.updateValue(genre.name, forKey: genre.id)
+        }
+        self.filterHeader[self.filterHeader.first?.key ?? ["none":0]] = true
+        DispatchQueue.main.async {
+            self.initializeFilterBar()
+        }
+        externalRequest("\(HttpUtils.GENRE_URL)\(String(describing: filterHeaderAux.first!.key))&")
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = homeTableView.dequeueReusableCell(withIdentifier: kNibName, for: indexPath) as! HomeCardViewCell
-        
-        cell.selectionStyle = .none
-        
-        cell.movieBannerImageView.image = mockInfo[indexPath.row].movieImage
-        cell.movieRatingTextField.text = mockInfo[indexPath.row].rate
-        
-        cell.movieTitleTextField.text = mockInfo[indexPath.row].title
-        cell.favoriteIconImageView.image = mockInfo[indexPath.row].favoriteImage
-        cell.movieGenreTextField.text = mockInfo[indexPath.row].genre
-        cell.movieCountryTextField.text = mockInfo[indexPath.row].country
-        cell.movieDescriptionTextView.text = mockInfo[indexPath.row].description
-        
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let rowDetails = mockInfo[indexPath.row]
-        
-        let storyboard = UIStoryboard(name: "Details", bundle: nil)
-        
-        let secondVC = storyboard.instantiateViewController(withIdentifier: "DetailsStoryboard") as? DetailsViewController
-        secondVC?.details = rowDetails
-        secondVC?.moviesData = mockInfo
-        self.navigationController?.show(secondVC!, sender: self)
-        
-//        present(secondVC!, animated:true, completion:nil)
+    private func populateMoviesList(_ data: MoviesResponse) {
+        for object in data.results{
+            var genres: String = ""
+            for id in object.genre_ids!{
+                genres += (self.filterHeaderAux[id] ?? "")
+                genres += ", "
+            }
+            genres.removeLast(2)
+            let banner: UIImage
+            let backdrop: UIImage
+            var backdropPath = object.backdrop_path ?? "/"
+            var posterPath = object.poster_path ?? "/"
+            
+            banner = self.getUrlImage(&posterPath)
+            backdrop = self.getUrlImage(&backdropPath)
+            
+            self.movieList.append(DetailsModel(
+                movieShowcaseBanner: backdrop,
+                movieImage: banner,
+                favoriteImage: UIImage(systemName: "heart")!,
+                rate: String(object.vote_average!),
+                title: object.title!,
+                genre: genres,
+                country: "Não informado",
+                description: object.overview!,
+                evaluatedBy: "IMDB",
+                movieDuration: 000,
+                numberOfVotes: object.vote_count!))
+            
+            DispatchQueue.main.async {
+                self.initializeTableView()
+            }
+        }
     }
 }

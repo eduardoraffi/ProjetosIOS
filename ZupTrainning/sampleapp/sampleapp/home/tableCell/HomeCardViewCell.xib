@@ -17,10 +17,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Ee-kg-Smd">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="235"/>
+                        <rect key="frame" x="0.0" y="0.0" width="406" height="235"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="1he-BV-NZT">
-                                <rect key="frame" x="8" y="8" width="398" height="219"/>
+                                <rect key="frame" x="8" y="8" width="390" height="219"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a28-qO-jSh">
                                         <rect key="frame" x="0.0" y="0.0" width="195" height="219"/>
@@ -56,39 +56,39 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TRx-x4-UUV">
-                                        <rect key="frame" x="203" y="0.0" width="195" height="219"/>
+                                        <rect key="frame" x="195" y="0.0" width="195" height="219"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="G8S-NG-3fR">
-                                                <rect key="frame" x="170" y="1.5" width="25" height="22.5"/>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="25" id="2IC-xh-juL"/>
-                                                    <constraint firstAttribute="width" constant="25" id="Y94-fR-Shb"/>
-                                                </constraints>
-                                            </imageView>
-                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="O Rei leão (2019)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V9o-lF-Nuk">
-                                                <rect key="frame" x="0.0" y="8" width="162" height="9"/>
+                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="O Rei leão (2019)" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V9o-lF-Nuk">
+                                                <rect key="frame" x="0.0" y="8" width="162" height="21"/>
                                                 <color key="textColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="G8S-NG-3fR">
+                                                <rect key="frame" x="170" y="5" width="25" height="22.5"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="25" id="X61-xr-7KI"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="fBc-Hn-qXV"/>
+                                                </constraints>
+                                            </imageView>
                                             <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Aventura, Familia" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KIs-9X-8vA">
-                                                <rect key="frame" x="0.0" y="25" width="110" height="18.5"/>
+                                                <rect key="frame" x="0.0" y="37" width="187" height="18.5"/>
                                                 <color key="textColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Country" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f3v-1o-bQM">
-                                                <rect key="frame" x="0.0" y="43.5" width="52" height="18.5"/>
+                                                <rect key="frame" x="0.0" y="55.5" width="187" height="18.5"/>
                                                 <color key="textColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kNp-n0-wWL">
-                                                <rect key="frame" x="-4" y="70" width="199" height="149"/>
+                                                <rect key="frame" x="-4" y="82" width="199" height="137"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                                <color key="textColor" red="0.41599202200000002" green="0.41599202200000002" blue="0.41599202200000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                                <color key="textColor" red="0.41568627450980389" green="0.41568627450980389" blue="0.41568627450980389" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
@@ -98,20 +98,28 @@
                                             <constraint firstItem="KIs-9X-8vA" firstAttribute="top" secondItem="V9o-lF-Nuk" secondAttribute="bottom" constant="8" id="5O6-tb-P2b"/>
                                             <constraint firstAttribute="bottom" secondItem="kNp-n0-wWL" secondAttribute="bottom" id="Dzh-98-TSA"/>
                                             <constraint firstAttribute="trailing" secondItem="kNp-n0-wWL" secondAttribute="trailing" id="Gb6-rh-0Gf"/>
-                                            <constraint firstItem="G8S-NG-3fR" firstAttribute="centerY" secondItem="V9o-lF-Nuk" secondAttribute="centerY" id="Gzx-cN-cpL"/>
                                             <constraint firstItem="G8S-NG-3fR" firstAttribute="leading" secondItem="V9o-lF-Nuk" secondAttribute="trailing" constant="8" id="Ifl-bs-INB"/>
-                                            <constraint firstItem="G8S-NG-3fR" firstAttribute="top" secondItem="TRx-x4-UUV" secondAttribute="top" id="KJl-zc-ARt"/>
                                             <constraint firstItem="kNp-n0-wWL" firstAttribute="top" secondItem="f3v-1o-bQM" secondAttribute="bottom" constant="8" id="OgS-PK-s9B"/>
+                                            <constraint firstAttribute="trailing" secondItem="KIs-9X-8vA" secondAttribute="trailing" constant="8" id="QEC-80-aes"/>
                                             <constraint firstItem="f3v-1o-bQM" firstAttribute="leading" secondItem="TRx-x4-UUV" secondAttribute="leading" id="WC5-2z-f3B"/>
                                             <constraint firstItem="V9o-lF-Nuk" firstAttribute="top" secondItem="TRx-x4-UUV" secondAttribute="top" constant="8" id="aGm-oo-RBc"/>
                                             <constraint firstItem="f3v-1o-bQM" firstAttribute="top" secondItem="KIs-9X-8vA" secondAttribute="bottom" id="hjv-5c-Up3"/>
+                                            <constraint firstItem="G8S-NG-3fR" firstAttribute="height" secondItem="V9o-lF-Nuk" secondAttribute="height" multiplier="1.19048" id="iG5-Es-wXF"/>
                                             <constraint firstItem="V9o-lF-Nuk" firstAttribute="leading" secondItem="TRx-x4-UUV" secondAttribute="leading" id="iTC-T6-oUV"/>
                                             <constraint firstItem="kNp-n0-wWL" firstAttribute="leading" secondItem="TRx-x4-UUV" secondAttribute="leading" constant="-4" id="jxA-Ak-5ZQ"/>
+                                            <constraint firstItem="G8S-NG-3fR" firstAttribute="firstBaseline" secondItem="V9o-lF-Nuk" secondAttribute="firstBaseline" id="ui0-xR-MlN"/>
                                             <constraint firstAttribute="trailing" secondItem="G8S-NG-3fR" secondAttribute="trailing" id="vn8-eR-rEP"/>
                                             <constraint firstItem="KIs-9X-8vA" firstAttribute="leading" secondItem="TRx-x4-UUV" secondAttribute="leading" id="yJI-KW-Nql"/>
+                                            <constraint firstAttribute="trailing" secondItem="f3v-1o-bQM" secondAttribute="trailing" constant="8" id="yop-OA-12P"/>
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="TRx-x4-UUV" secondAttribute="bottom" id="0Uc-Qt-fqM"/>
+                                    <constraint firstItem="TRx-x4-UUV" firstAttribute="top" secondItem="1he-BV-NZT" secondAttribute="top" id="5rP-sg-xpP"/>
+                                    <constraint firstItem="TRx-x4-UUV" firstAttribute="leading" secondItem="a28-qO-jSh" secondAttribute="trailing" id="AOb-cl-BXw"/>
+                                    <constraint firstAttribute="trailing" secondItem="TRx-x4-UUV" secondAttribute="trailing" id="FFB-Av-DMM"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

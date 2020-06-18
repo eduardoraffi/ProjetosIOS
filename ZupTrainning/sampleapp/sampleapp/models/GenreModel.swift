@@ -8,19 +8,32 @@
 
 import Foundation
 
-class GenreModel {
-    let id: String
-    let name: String
+struct GenreModel: Codable {
     
-    init(_ id: String, _ name:String) {
-        self.id = id
-        self.name = name
+    struct Genre: Codable {
+        let id: Int
+        let name: String
     }
     
-    func toString() -> String{
-        return """
-        Id: \(id)
-        Genre: \(name)
-        """
+    let genres: [Genre]
+}
+
+struct MoviesResponse: Codable {
+    
+    struct Movie: Codable {
+        let popularity: Double?
+        let vote_count: Int?
+        let poster_path: String?
+        let id: Int?
+        let adult: Bool?
+        let backdrop_path: String?
+        let original_language: String?
+        let original_title: String?
+        let genre_ids: [Int]?
+        let title: String?
+        let vote_average: Double?
+        let overview: String?
+        let release_date: String?
     }
+    let results : [Movie]
 }

@@ -25,7 +25,7 @@ class FilterCollectionViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         filterBackView.layer.borderWidth = 1
-        filterBackView.layer.borderColor = UIColor.lightGray.cgColor
+        filterBackView.layer.borderColor = UIColor.darkGray.cgColor
         filterBackView.layer.cornerRadius = filterLabel.frame.size.height/3
         updateState()
     }
@@ -33,7 +33,7 @@ class FilterCollectionViewCell: UICollectionViewCell {
     private func updateState(){
         if isSelected {
             filterLabel.textColor = .white
-            filterBackView.backgroundColor = .lightGray
+            filterBackView.backgroundColor = .darkGray
         } else {
             filterLabel.textColor = .lightGray
             filterBackView.backgroundColor = .clear
