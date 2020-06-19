@@ -11,6 +11,7 @@ import UIKit
 
 class HomeViewController: UIViewController{
     
+    @IBOutlet weak var loadingView: LoadingView!
     @IBOutlet weak var homeTableView: UITableView!
     @IBOutlet weak var homeCollectionView: UICollectionView!
     @IBOutlet var mainView: UIView!
@@ -26,14 +27,15 @@ class HomeViewController: UIViewController{
         initializeLoadingView()
         genresRequest()
     }
-
+    
     private func initializeLoadingView(){
-//        loadingView.tryAgainButton.addTarget(self, action: #selector(self.tryAgainButtonAction), for: .touchDown)
-//        loadingView.isHidden = false
+        //        loadingView = Bundle.main.loadNibNamed("LoadingView", owner:
+        //            self, options: nil)?.first as? LoadingView
+        //        loadingView?.tryAgainButton.addTarget(self, action: #selector(self.tryAgainButtonAction), for: .touchDown)
     }
-
+    
     @objc private func tryAgainButtonAction(){
-//        loadingView.loadingStatus(true)
+        //        LoadingView.sharedInstance.loadingStatus(true)
         externalRequest(HttpUtils.FILTER_URL)
         externalRequest("\(HttpUtils.GENRE_URL)\(String(describing: filterHeaderAux.first!.key))&")
         
@@ -67,6 +69,9 @@ class HomeViewController: UIViewController{
     }
     
     private func genresRequest(){
+        loadingView.loadingStatus(true)
+        loadingView.isHidden = false
+        
         HttpUtils.requestTask(HttpUtils.FILTER_URL) { (genresModel: GenreModel) in
             self.populateGenreList(genresModel)
         }
@@ -119,10 +124,10 @@ class HomeViewController: UIViewController{
                 evaluatedBy: "IMDB",
                 movieDuration: 000,
                 numberOfVotes: object.vote_count!))
-            
-            DispatchQueue.main.async {
-                self.initializeTableView()
-            }
+        }
+        DispatchQueue.main.async {
+            self.initializeTableView()
+            self.loadingView.isHidden = true
         }
     }
 }

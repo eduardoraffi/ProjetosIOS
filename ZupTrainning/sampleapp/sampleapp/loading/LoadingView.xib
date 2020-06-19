@@ -9,11 +9,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoadingView" customModule="sampleapp" customModuleProvider="target">
             <connections>
-                <outlet property="mainView" destination="iN0-l3-epB" id="7FB-Q5-n5f"/>
+                <outlet property="cantConnectView" destination="xHe-li-sge" id="3Q6-nQ-L8W"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="2S8-KE-fnd"/>
+                <outlet property="errorMessageLabel" destination="m68-MC-PwC" id="TRS-em-n3m"/>
+                <outlet property="loadingImage" destination="3kM-gD-zpx" id="Vjr-Qw-aIg"/>
+                <outlet property="tryAgainButton" destination="IYC-wY-D3d" id="woJ-A0-Uad"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" restorationIdentifier="LoadingView" id="iN0-l3-epB" customClass="LoadingView" customModule="sampleapp" customModuleProvider="target">
+        <view contentMode="scaleToFill" restorationIdentifier="LoadingView" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -77,12 +81,6 @@
                 <constraint firstItem="3kM-gD-zpx" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.3" id="vFe-kN-O3D"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <connections>
-                <outlet property="cantConnectView" destination="xHe-li-sge" id="P3Q-ur-GKW"/>
-                <outlet property="errorMessageLabel" destination="m68-MC-PwC" id="K52-wc-f5y"/>
-                <outlet property="loadingImage" destination="3kM-gD-zpx" id="5Z8-8W-scg"/>
-                <outlet property="tryAgainButton" destination="IYC-wY-D3d" id="QSN-4C-g6L"/>
-            </connections>
             <point key="canvasLocation" x="139" y="100"/>
         </view>
     </objects>

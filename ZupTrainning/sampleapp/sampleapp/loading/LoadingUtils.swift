@@ -12,3 +12,9 @@ import UIKit
 class LoadingUtils {
     
 }
+
+extension UIViewController {
+    
+}
+
+

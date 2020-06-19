@@ -48,6 +48,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }
         path.removeLast()
         path.append("&")
+        loadingView.isHidden = false
         self.externalRequest(path)
         self.homeTableView.reloadData()
     }

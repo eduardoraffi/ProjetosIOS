@@ -52,14 +52,22 @@
                                     <outlet property="delegate" destination="EbX-lL-OFq" id="rZG-Te-m7u"/>
                                 </connections>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wNn-kC-BQS" customClass="LoadingView" customModule="sampleapp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.10980392156862745" green="0.10980392156862745" blue="0.10980392156862745" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="rg6-PO-95b" firstAttribute="top" secondItem="xk0-Eu-eJi" secondAttribute="top" id="IuF-Vh-uO3"/>
+                            <constraint firstAttribute="bottom" secondItem="wNn-kC-BQS" secondAttribute="bottom" id="Kw7-Id-mAZ"/>
+                            <constraint firstItem="xk0-Eu-eJi" firstAttribute="trailing" secondItem="wNn-kC-BQS" secondAttribute="trailing" id="MWN-QC-tGf"/>
                             <constraint firstItem="xk0-Eu-eJi" firstAttribute="trailing" secondItem="F2c-Wz-yoe" secondAttribute="trailing" constant="16" id="QHt-Z9-cRf"/>
                             <constraint firstItem="xk0-Eu-eJi" firstAttribute="bottom" secondItem="F2c-Wz-yoe" secondAttribute="bottom" id="Zev-0y-Ndn"/>
                             <constraint firstItem="F2c-Wz-yoe" firstAttribute="top" secondItem="rg6-PO-95b" secondAttribute="bottom" id="bqT-Bb-n8f"/>
                             <constraint firstItem="rg6-PO-95b" firstAttribute="leading" secondItem="xk0-Eu-eJi" secondAttribute="leading" id="f9p-aF-BpP"/>
+                            <constraint firstItem="wNn-kC-BQS" firstAttribute="top" secondItem="xk0-Eu-eJi" secondAttribute="top" id="ggp-Co-UVk"/>
+                            <constraint firstItem="wNn-kC-BQS" firstAttribute="leading" secondItem="xk0-Eu-eJi" secondAttribute="leading" id="jHB-Px-KsB"/>
                             <constraint firstItem="xk0-Eu-eJi" firstAttribute="trailing" secondItem="rg6-PO-95b" secondAttribute="trailing" id="lDf-7R-5WZ"/>
                             <constraint firstItem="F2c-Wz-yoe" firstAttribute="leading" secondItem="xk0-Eu-eJi" secondAttribute="leading" constant="16" id="uT6-aV-lGP"/>
                         </constraints>
@@ -70,6 +78,7 @@
                     <connections>
                         <outlet property="homeCollectionView" destination="Eji-c3-qIy" id="Yj3-Bh-Zz5"/>
                         <outlet property="homeTableView" destination="F2c-Wz-yoe" id="ORb-rM-aW4"/>
+                        <outlet property="loadingView" destination="wNn-kC-BQS" id="DD8-bh-BxR"/>
                         <outlet property="mainView" destination="Czk-lY-kZH" id="Ybg-4R-YxQ"/>
                     </connections>
                 </viewController>

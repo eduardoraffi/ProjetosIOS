@@ -8,9 +8,10 @@
 
 import UIKit
 
+@IBDesignable
 class LoadingView: UIView {
-
-    @IBOutlet var mainView: LoadingView!
+    
+    @IBOutlet var contentView: UIView!
     @IBOutlet weak var cantConnectView: UIView!
     @IBOutlet weak var loadingImage: UIImageView!
     @IBOutlet weak var errorMessageLabel: UILabel!
@@ -18,15 +19,20 @@ class LoadingView: UIView {
     
     private var isLoading : Bool = false
     
-//    override class func awakeFromNib() {
-//        super.awakeFromNib()
-//    }
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        commonInit()
+    }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        UINib.init(nibName: "LoadingView", bundle: nil).instantiate(withOwner: self, options: nil)
-        addSubview(mainView)
-        mainView.frame = self.bounds
+        commonInit()
+    }
+    
+    func commonInit(){
+        Bundle.main.loadNibNamed("LoadingView", owner: self, options: nil)
+        addSubview(contentView)
+        contentView.frame = self.bounds
     }
     
     func loadingStatus(_ loading: Bool){
