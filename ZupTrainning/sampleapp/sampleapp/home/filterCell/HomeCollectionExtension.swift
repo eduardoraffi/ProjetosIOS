@@ -12,7 +12,7 @@ import UIKit
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return filterHeader.count
+        return filterHeaderAux.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -25,29 +25,13 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! FilterCollectionViewCell
-        for (key , value) in filterHeader{
-            if Array(key.keys)[0].contains(cell.filterLabel.text!) && value{
-                return
-            }
-        }
-        
-        for (key , _) in filterHeader {
-            filterHeader[key] = false
-            if Array(key.keys)[0].contains(cell.filterLabel.text!){
-                filterHeader[key] = true
-                break
-            }
-        }
         
         var path = "discover/movie?with_genres="
-        for (key,value) in filterHeader{
-            //            print((String(Array(key.keys)[0])) + ":" + (String(Array(key.values)[0])))
-            if(value){
-                path.append((String(Array(key.values)[0]) + ","))
+        for (id, name) in filterHeaderAux{
+            if(cell.filterLabel.text == name){
+                path.append("\(String(id))&")
             }
         }
-        path.removeLast()
-        path.append("&")
         loadingView.isHidden = false
         self.externalRequest(path)
         self.homeTableView.reloadData()

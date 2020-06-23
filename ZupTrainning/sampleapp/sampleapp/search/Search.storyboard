@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eZK-59-B5m">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aQQ-fj-wsc">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -50,7 +50,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hVY-eG-EeM"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="magnifyingglass" catalog="system" id="7yM-am-Xhe"/>
+                    <navigationItem key="navigationItem" id="R19-bb-Ndt"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="searchBar" destination="UmG-VG-uQq" id="dW9-Nk-v3n"/>
@@ -59,7 +59,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Lm-6W-cWX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="343" y="-267"/>
+            <point key="canvasLocation" x="1252.1739130434783" y="-267.1875"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Uoh-IA-6dx">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="aQQ-fj-wsc" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="magnifyingglass" catalog="system" id="7yM-am-Xhe"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="c1b-H1-z01">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="eZK-59-B5m" kind="relationship" relationship="rootViewController" id="Yof-1W-hOf"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l5X-h9-FaM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="342.02898550724638" y="-267.1875"/>
         </scene>
     </scenes>
     <resources>

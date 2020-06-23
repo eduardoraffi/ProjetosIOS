@@ -19,13 +19,11 @@ class HomeViewController: UIViewController{
     let kNibName = "HomeCardViewCell"
     let kCollectionNames = "FilterCollectionViewCell"
     var movieList : [DetailsModel] = []
-    var filterHeader: [[String : Int]:Bool] = [:]
     var filterHeaderAux: [Int : String] = [:]
     var moviesResponse: [MoviesResponse.Movie] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        CoreDataUtils.clearDC()
         initializeFilterBar()
         genresRequest()
     }
@@ -33,20 +31,6 @@ class HomeViewController: UIViewController{
     @objc private func tryAgainButtonAction(){
         externalRequest(HttpUtils.FILTER_URL)
         externalRequest("\(HttpUtils.GENRE_URL)\(String(describing: filterHeaderAux.first!.key))&")
-        
-    }
-    
-    private func getUrlImage( _ path: inout String) -> UIImage{
-        if !path.contains("/"){
-            path = "/"+path
-        }
-        do{
-            let imageUrl = URL(string: "http://image.tmdb.org/t/p/w780/\(path)")
-            let data = try Data(contentsOf: imageUrl!)
-            return UIImage(data: data)!
-        } catch{
-            return UIImage(named: "lionking")!
-        }
     }
     
     private func initializeFilterBar(){
@@ -81,13 +65,10 @@ class HomeViewController: UIViewController{
     
     private func populateGenreList(_ data: GenreModel){
         for genre in data.genres{
-            self.filterHeader.updateValue(false, forKey: [genre.name: genre.id])
             self.filterHeaderAux.updateValue(genre.name, forKey: genre.id)
         }
-        self.filterHeader[self.filterHeader.first?.key ?? ["none":0]] = true
         DispatchQueue.main.async {
             self.homeCollectionView.reloadData()
-
         }
         externalRequest("\(HttpUtils.GENRE_URL)\(String(describing: filterHeaderAux.first!.key))&")
     }
@@ -108,10 +89,11 @@ class HomeViewController: UIViewController{
             var backdropPath = object.backdrop_path ?? "/"
             var posterPath = object.poster_path ?? "/"
             
-            banner = self.getUrlImage(&posterPath)
-            backdrop = self.getUrlImage(&backdropPath)
+            banner = HttpUtils.getUrlImage(&posterPath)
+            backdrop = HttpUtils.getUrlImage(&backdropPath)
             self.moviesResponse.append(object)
             self.movieList.append(DetailsModel(
+                id: Int(object.id!),
                 movieShowcaseBanner: backdrop,
                 movieImage: banner,
                 favoriteImage:  CoreDataUtils.checkFavorited(movieTitle: object.title!) ? UIImage(systemName: "heart.fill")! : UIImage(systemName: "heart")!,

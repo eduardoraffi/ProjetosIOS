@@ -26,6 +26,7 @@ class FavoritesViewController: UIViewController{
         let coreData: [Favorites] = CoreDataUtils.recoverData()
             for object in coreData {
                 mockInfo.append(DetailsModel(
+                    id: Int(object.id),
                     movieShowcaseBanner: HttpUtils.getUrlImage(&object.backdrop_path!),
                     movieImage: HttpUtils.getUrlImage(&object.poster_path!),
                     favoriteImage: UIImage(systemName: "heart.fill")!,
@@ -78,6 +79,4 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource{
         
         return cell
     }
-    
-    
 }

@@ -11,6 +11,7 @@ import UIKit
 
 class DetailsModel {
     
+    let id: Int
     let movieShowcaseBanner: UIImage
     let movieImage: UIImage
     let title : String
@@ -23,8 +24,9 @@ class DetailsModel {
     let numberOfVotes: Int
     let description : String
     
-    required init(movieShowcaseBanner:UIImage, movieImage:UIImage, favoriteImage:UIImage, rate:String, title:String, genre:String, country:String, description:String, evaluatedBy:String, movieDuration: Int, numberOfVotes: Int) {
+    required init(id: Int,movieShowcaseBanner:UIImage, movieImage:UIImage, favoriteImage:UIImage, rate:String, title:String, genre:String, country:String, description:String, evaluatedBy:String, movieDuration: Int, numberOfVotes: Int) {
         
+        self.id = id
         self.movieShowcaseBanner = movieShowcaseBanner
         self.movieImage = movieImage
         self.title = title
