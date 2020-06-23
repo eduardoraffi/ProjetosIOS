@@ -21,21 +21,16 @@ class HomeViewController: UIViewController{
     var movieList : [DetailsModel] = []
     var filterHeader: [[String : Int]:Bool] = [:]
     var filterHeaderAux: [Int : String] = [:]
+    var moviesResponse: [MoviesResponse.Movie] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initializeLoadingView()
+        CoreDataUtils.clearDC()
+        initializeFilterBar()
         genresRequest()
     }
     
-    private func initializeLoadingView(){
-        //        loadingView = Bundle.main.loadNibNamed("LoadingView", owner:
-        //            self, options: nil)?.first as? LoadingView
-        //        loadingView?.tryAgainButton.addTarget(self, action: #selector(self.tryAgainButtonAction), for: .touchDown)
-    }
-    
     @objc private func tryAgainButtonAction(){
-        //        LoadingView.sharedInstance.loadingStatus(true)
         externalRequest(HttpUtils.FILTER_URL)
         externalRequest("\(HttpUtils.GENRE_URL)\(String(describing: filterHeaderAux.first!.key))&")
         
@@ -91,12 +86,16 @@ class HomeViewController: UIViewController{
         }
         self.filterHeader[self.filterHeader.first?.key ?? ["none":0]] = true
         DispatchQueue.main.async {
-            self.initializeFilterBar()
+            self.homeCollectionView.reloadData()
+
         }
         externalRequest("\(HttpUtils.GENRE_URL)\(String(describing: filterHeaderAux.first!.key))&")
     }
     
     private func populateMoviesList(_ data: MoviesResponse) {
+        DispatchQueue.main.async {
+        self.moviesResponse.removeAll()
+
         for object in data.results{
             var genres: String = ""
             for id in object.genre_ids!{
@@ -111,11 +110,11 @@ class HomeViewController: UIViewController{
             
             banner = self.getUrlImage(&posterPath)
             backdrop = self.getUrlImage(&backdropPath)
-            
+            self.moviesResponse.append(object)
             self.movieList.append(DetailsModel(
                 movieShowcaseBanner: backdrop,
                 movieImage: banner,
-                favoriteImage: UIImage(systemName: "heart")!,
+                favoriteImage:  CoreDataUtils.checkFavorited(movieTitle: object.title!) ? UIImage(systemName: "heart.fill")! : UIImage(systemName: "heart")!,
                 rate: String(object.vote_average!),
                 title: object.title!,
                 genre: genres,
@@ -125,7 +124,6 @@ class HomeViewController: UIViewController{
                 movieDuration: 000,
                 numberOfVotes: object.vote_count!))
         }
-        DispatchQueue.main.async {
             self.initializeTableView()
             self.loadingView.isHidden = true
         }

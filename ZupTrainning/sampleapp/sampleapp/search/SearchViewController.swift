@@ -15,8 +15,8 @@ class SearchViewController: UIViewController{
     @IBOutlet weak var searchBar: UISearchBar!
     
     let kNibName = "HomeCardViewCell"
-    var mockInfo : [DetailsModel] = []
     var searchResults : [DetailsModel] = []
+    var filterHeaderAux: [Int : String] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,11 +33,6 @@ class SearchViewController: UIViewController{
         searchTableView.register(UINib.init(nibName: kNibName, bundle: nil), forCellReuseIdentifier: kNibName)
         searchTableView.backgroundColor = .clear
         
-        // MARK: Mocking data
-        mockInfo.append(DetailsModel(movieShowcaseBanner: UIImage(named: "lionking")!, movieImage: UIImage(named: "lionking")!, favoriteImage: UIImage(systemName: "heart.fill")!, rate: "9.0", title: "O Rei Leão (2019)", genre: "Aventura, Família", country: "United States of America", description: "Filme do gatinho pistola que vinga o pai morto pelo tio mais pistola ainda", evaluatedBy: "IMDB", movieDuration: 118, numberOfVotes: 3500))
-        
-        mockInfo.append(DetailsModel(movieShowcaseBanner: UIImage(named: "lionking")!, movieImage: UIImage(named: "lionking")!, favoriteImage: UIImage(systemName: "heart.fill")!, rate: "10.0", title: "Primeira guerra mundial", genre: "Aventura, Violência", country: "United States of America", description: "Pew pew pew, pow pow pow, tatatatatata ---- nhooooooooooooooon, booooom, tatatatatata ahhhhhhhhhhh fire in the hole", evaluatedBy: "IMDB", movieDuration: 130, numberOfVotes: 100))
-        
         searchTableView.reloadData()
     }
         
@@ -45,6 +40,8 @@ class SearchViewController: UIViewController{
 
 
 extension SearchViewController: UISearchBarDelegate {
+    
+    
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if let textFieldInsideSearchBar = self.searchBar.value(forKey: "searchField") as? UITextField,
@@ -57,12 +54,87 @@ extension SearchViewController: UISearchBarDelegate {
                 glassIconView.tintColor = .white
             }
         }
-        searchResults = mockInfo.filter({$0.title.prefix(searchText.count) == searchText})
-        if searchText.count == 0 {
-            searchResults.removeAll()
+        if filterHeaderAux.count == 0 {
+            genresRequest(searchText)
+        } else {
+            externalRequest("\(HttpUtils.SEARCH_URL)\(searchText)&")
         }
-        searchTableView.reloadData()
     }
+    
+    func getApiItems(_ data: MoviesResponse){
+        searchResults.removeAll()
+        for object in data.results{
+            var genres: String = ""
+            for id in object.genre_ids!{
+                genres += (self.filterHeaderAux[id] ?? "")
+                genres += ", "
+            }
+            if genres.count > 2 {
+                genres.removeLast(2)
+            } else {
+                genres = "Sem informação"
+            }
+            let banner: UIImage
+            let backdrop: UIImage
+            var backdropPath = object.backdrop_path ?? "/"
+            var posterPath = object.poster_path ?? "/"
+            
+            banner = self.getUrlImage(&posterPath)
+            backdrop = self.getUrlImage(&backdropPath)
+            
+            self.searchResults.append(DetailsModel(
+                movieShowcaseBanner: backdrop,
+                movieImage: banner,
+                favoriteImage: UIImage(systemName: "heart")!,
+                rate: String(object.vote_average!),
+                title: object.title!,
+                genre: genres,
+                country: "Não informado",
+                description: object.overview!,
+                evaluatedBy: "IMDB",
+                movieDuration: 000,
+                numberOfVotes: object.vote_count!))
+        }
+    }
+    
+    private func getUrlImage( _ path: inout String) -> UIImage{
+        if !path.contains("/"){
+            path = "/"+path
+        }
+        do{
+            let imageUrl = URL(string: "http://image.tmdb.org/t/p/w780/\(path)")
+            let data = try Data(contentsOf: imageUrl!)
+            return UIImage(data: data)!
+        } catch{
+            return UIImage(named: "lionking")!
+        }
+    }
+    
+    private func genresRequest(_ searchText: String){
+        HttpUtils.requestTask(HttpUtils.FILTER_URL) { (genresModel: GenreModel) in
+            self.populateGenreList(genresModel)
+            DispatchQueue.main.async {
+                self.externalRequest("\(HttpUtils.SEARCH_URL)\(searchText)&")
+            }
+            
+        }
+    }
+    
+    public func externalRequest(_ requestType: String){
+        HttpUtils.requestTask(requestType) { (movie: MoviesResponse) in
+            self.getApiItems(movie)
+            DispatchQueue.main.async {
+                self.searchTableView.reloadData()
+            }
+        }
+    }
+
+    private func populateGenreList(_ data: GenreModel){
+        for genre in data.genres{
+            self.filterHeaderAux.updateValue(genre.name, forKey: genre.id)
+        }
+    }
+
 }
 
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource{
@@ -83,7 +155,6 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource{
                 
          cell.movieBannerImageView.image = searchResults[indexPath.row].movieImage
          cell.movieRatingTextField.text = searchResults[indexPath.row].rate
-        
          cell.movieTitleTextField.text = searchResults[indexPath.row].title
          cell.favoriteIconImageView.image = searchResults[indexPath.row].favoriteImage
          cell.movieGenreTextField.text = searchResults[indexPath.row].genre

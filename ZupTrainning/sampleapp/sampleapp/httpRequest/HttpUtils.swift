@@ -13,6 +13,7 @@ class HttpUtils {
     static let BASE_URL = "https://api.themoviedb.org/3/"
     static let FILTER_URL = "genre/movie/list?"
     static let GENRE_URL = "discover/movie?with_genres="
+    static let SEARCH_URL = "search/movie?query="
     static let API_KEY = "api_key=6e0acb8d22811c52cb7556da8d6aefdf"
     
     public static func requestTask<T: Decodable>(_ urlParams: String, completion: @escaping (_ json: T) -> Void){
@@ -35,4 +36,16 @@ class HttpUtils {
         task.resume()
     }
     
+    public static func getUrlImage( _ path: inout String) -> UIImage{
+        if !path.contains("/"){
+            path = "/"+path
+        }
+        do{
+            let imageUrl = URL(string: "http://image.tmdb.org/t/p/w780/\(path)")
+            let data = try Data(contentsOf: imageUrl!)
+            return UIImage(data: data)!
+        } catch{
+            return UIImage(named: "lionking")!
+        }
+    }
 }

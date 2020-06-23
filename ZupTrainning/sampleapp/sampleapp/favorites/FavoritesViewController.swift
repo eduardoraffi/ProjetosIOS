@@ -19,16 +19,34 @@ class FavoritesViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        mockInfo.removeAll()
+        let coreData: [Favorites] = CoreDataUtils.recoverData()
+            for object in coreData {
+                mockInfo.append(DetailsModel(
+                    movieShowcaseBanner: HttpUtils.getUrlImage(&object.backdrop_path!),
+                    movieImage: HttpUtils.getUrlImage(&object.poster_path!),
+                    favoriteImage: UIImage(systemName: "heart.fill")!,
+                    rate: String(object.vote_average),
+                    title: object.title!,
+                    genre: "Ajustar depois",
+                    country: "Nao informado",
+                    description: object.overview!,
+                    evaluatedBy: "IMDB",
+                    movieDuration: 000,
+                    numberOfVotes: Int(object.vote_count)))
+            }
+        
         initializeTableView()
+        super.viewDidAppear(animated)
     }
     
     func initializeTableView(){
         favoritesTableView.register(UINib.init(nibName: kNibName, bundle: nil), forCellReuseIdentifier: kNibName)
         favoritesTableView.backgroundColor = .clear
-        
-        // MARK: Mocking data
-        mockInfo.append(DetailsModel(movieShowcaseBanner: UIImage(named: "lionking")!, movieImage: UIImage(named: "lionking")!, favoriteImage: UIImage(systemName: "heart.fill")!, rate: "9.0", title: "O Rei Leão (2019)", genre: "Aventura, Família", country: "United States of America", description: "Filme do gatinho pistola que vinga o pai morto pelo tio mais pistola ainda", evaluatedBy: "IMDB", movieDuration: 118, numberOfVotes: 3500))
-            
+        favoritesTableView.separatorStyle = .none
         favoritesTableView.reloadData()
     }
     
@@ -36,6 +54,11 @@ class FavoritesViewController: UIViewController{
 
 extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if(mockInfo.count == 0){
+            self.favoritesTableView.setEmptyMessage("Você ainda não favoritou nenhum filme.")
+        } else{
+            self.favoritesTableView.setEmptyMessage("")
+        }
         return mockInfo.count
     }
     
