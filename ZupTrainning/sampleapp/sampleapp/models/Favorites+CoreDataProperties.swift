@@ -30,5 +30,6 @@ extension Favorites {
     @NSManaged public var title: String?
     @NSManaged public var vote_average: Double
     @NSManaged public var vote_count: Int16
+    @NSManaged public var genreToString: String
 
 }

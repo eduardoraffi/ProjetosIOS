@@ -12,30 +12,19 @@ import UIKit
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if(searchResults.count == 0){
+        if(searchMoviesResponse.count == 0){
             self.searchTableView.setEmptyMessage("Qual filme você está procurando O_o?")
         } else{
             self.searchTableView.setEmptyMessage("")
         }
-        return searchResults.count
+        return searchMoviesResponse.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = searchTableView.dequeueReusableCell(withIdentifier: kNibName, for: indexPath) as! HomeCardViewCell
-        
-        cell.selectionStyle = .none
-        let movie = searchMoviesResponse.filter({($0.title?.contains(searchResults[indexPath.row].title))!})
-        
-        cell.movieBannerImageView.image = searchResults[indexPath.row].movieImage
-        cell.movieRatingTextField.text = searchResults[indexPath.row].rate
-        cell.movieTitleTextField.text = searchResults[indexPath.row].title
-        cell.favoriteIconImageView.image = CoreDataUtils.checkFavorited(movieTitle: (movie.first?.title)!) ? UIImage(systemName: "heart.fill")! : UIImage(systemName: "heart")!
-        cell.movieGenreTextField.text = searchResults[indexPath.row].genre
-        cell.movieCountryTextField.text = searchResults[indexPath.row].country
-        cell.movieDescriptionTextView.text = searchResults[indexPath.row].description
+        let cell = Utils.instantiateTableViewCell(tableView: searchTableView, indexPath: indexPath, moviesList: searchMoviesResponse)
         
         let gesture = CustomTapRecognizer.init(target: self, action: #selector(favoriteTapped(gesture:)))
-        gesture.movieFav = movie.first!
+        gesture.movieFav = searchMoviesResponse[indexPath.row]
         cell.favoriteIconImageView.addGestureRecognizer(gesture)
         cell.favoriteIconImageView.isUserInteractionEnabled = true
         
@@ -43,13 +32,14 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let rowDetails = searchResults[indexPath.row]
+        let rowDetails = searchMoviesResponse[indexPath.row]
         
         let storyboard = UIStoryboard(name: "Details", bundle: nil)
         
         let secondVC = storyboard.instantiateViewController(withIdentifier: "DetailsStoryboard") as? DetailsViewController
         secondVC?.details = rowDetails
-        secondVC?.moviesData = searchResults
+        secondVC?.moviesData = searchMoviesResponse
+        secondVC?.filterHeaderAux = filterHeaderAux
         self.navigationController?.show(secondVC!, sender: self)
     }
     
@@ -58,4 +48,3 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource{
         searchTableView.reloadData()
     }
 }
-

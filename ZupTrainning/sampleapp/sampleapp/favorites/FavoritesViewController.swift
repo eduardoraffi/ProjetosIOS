@@ -15,7 +15,7 @@ class FavoritesViewController: UIViewController{
     @IBOutlet weak var favoritesTableView: UITableView!
     
     let kNibName = "HomeCardViewCell"
-    var mockInfo : [DetailsModel] = []
+    var mockInfo : [MoviesResponseModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,23 +23,7 @@ class FavoritesViewController: UIViewController{
     
     override func viewDidAppear(_ animated: Bool) {
         mockInfo.removeAll()
-        let coreData: [Favorites] = CoreDataUtils.recoverData()
-            for object in coreData {
-                mockInfo.append(DetailsModel(
-                    id: Int(object.id),
-                    movieShowcaseBanner: HttpUtils.getUrlImage(&object.backdrop_path!),
-                    movieImage: HttpUtils.getUrlImage(&object.poster_path!),
-                    favoriteImage: UIImage(systemName: "heart.fill")!,
-                    rate: String(object.vote_average),
-                    title: object.title!,
-                    genre: "Ajustar depois",
-                    country: "Nao informado",
-                    description: object.overview!,
-                    evaluatedBy: "IMDB",
-                    movieDuration: 000,
-                    numberOfVotes: Int(object.vote_count)))
-            }
-        
+        retrieveDataFromCore()
         initializeTableView()
         super.viewDidAppear(animated)
     }
@@ -51,6 +35,37 @@ class FavoritesViewController: UIViewController{
         favoritesTableView.reloadData()
     }
     
+    func retrieveDataFromCore(){
+        mockInfo.removeAll()
+        let coreData: [Favorites] = CoreDataUtils.recoverData()
+        for object in coreData {
+            let banner: UIImage
+            let backdrop: UIImage
+            var backdropPath = object.backdrop_path ?? "/"
+            var posterPath = object.poster_path ?? "/"
+            
+            banner = HttpUtils.getUrlImage(&posterPath)
+            backdrop = HttpUtils.getUrlImage(&backdropPath)
+            
+            mockInfo.append(MoviesResponseModel(
+                popularity: object.popularity ,
+                vote_count: Int(object.vote_count) ,
+                poster_path: object.poster_path ?? "/",
+                id: Int(object.id),
+                adult: object.adult,
+                backdrop_path: object.backdrop_path ?? "/",
+                original_language: object.original_language ?? "Information is missing",
+                original_title: object.original_title ?? "Information is missing",
+                genre_ids: NSKeyedUnarchiver.unarchiveObject(with: object.genre_ids!) as! [Int],
+                title: object.title ?? "Information is missing",
+                vote_average: object.vote_average,
+                overview: object.overview ?? "Information is missing",
+                release_date: object.release_date ?? "Information is missing",
+                posterImage: backdrop ,
+                bannerImage: banner,
+                genresToString: object.genreToString ?? "Não informado"))
+        }
+    }
 }
 
 extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource{
@@ -64,19 +79,19 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = favoritesTableView.dequeueReusableCell(withIdentifier: kNibName, for: indexPath) as! HomeCardViewCell
+        let cell = Utils.instantiateTableViewCell(tableView: favoritesTableView , indexPath: indexPath, moviesList: mockInfo)
         
-        cell.selectionStyle = .none
-        
-        cell.movieBannerImageView.image = mockInfo[indexPath.row].movieImage
-        cell.movieRatingTextField.text = mockInfo[indexPath.row].rate
-        
-        cell.movieTitleTextField.text = mockInfo[indexPath.row].title
-        cell.favoriteIconImageView.image = mockInfo[indexPath.row].favoriteImage
-        cell.movieGenreTextField.text = mockInfo[indexPath.row].genre
-        cell.movieCountryTextField.text = mockInfo[indexPath.row].country
-        cell.movieDescriptionTextView.text = mockInfo[indexPath.row].description
+        let gesture = CustomTapRecognizer.init(target: self, action: #selector(favoriteTapped(gesture:)))
+        gesture.movieFav = mockInfo[indexPath.row]
+        cell.favoriteIconImageView.addGestureRecognizer(gesture)
+        cell.favoriteIconImageView.isUserInteractionEnabled = true
         
         return cell
+    }
+    
+    @objc private func favoriteTapped(gesture: CustomTapRecognizer){
+        CoreDataUtils.save(movie: gesture.movieFav!)
+        retrieveDataFromCore()
+        favoritesTableView.reloadData()
     }
 }

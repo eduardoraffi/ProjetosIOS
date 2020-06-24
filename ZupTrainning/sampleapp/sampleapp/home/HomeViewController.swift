@@ -18,9 +18,8 @@ class HomeViewController: UIViewController{
     
     let kNibName = "HomeCardViewCell"
     let kCollectionNames = "FilterCollectionViewCell"
-    var movieList : [DetailsModel] = []
+    var movieList : [MoviesResponseModel] = []
     var filterHeaderAux: [Int : String] = [:]
-    var moviesResponse: [MoviesResponse.Movie] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +34,6 @@ class HomeViewController: UIViewController{
     
     private func initializeFilterBar(){
         homeCollectionView.register(UINib.init(nibName: kCollectionNames, bundle: nil), forCellWithReuseIdentifier: kCollectionNames)
-        
         homeCollectionView.allowsMultipleSelection = false
         homeCollectionView.reloadData()
     }
@@ -43,7 +41,6 @@ class HomeViewController: UIViewController{
     private func initializeTableView(){
         homeTableView.register(UINib.init(nibName: kNibName, bundle: nil), forCellReuseIdentifier: kNibName)
         homeTableView.backgroundColor = .clear
-        
         homeTableView.reloadData()
     }
     
@@ -75,37 +72,8 @@ class HomeViewController: UIViewController{
     
     private func populateMoviesList(_ data: MoviesResponse) {
         DispatchQueue.main.async {
-        self.moviesResponse.removeAll()
-
-        for object in data.results{
-            var genres: String = ""
-            for id in object.genre_ids!{
-                genres += (self.filterHeaderAux[id] ?? "")
-                genres += ", "
-            }
-            genres.removeLast(2)
-            let banner: UIImage
-            let backdrop: UIImage
-            var backdropPath = object.backdrop_path ?? "/"
-            var posterPath = object.poster_path ?? "/"
-            
-            banner = HttpUtils.getUrlImage(&posterPath)
-            backdrop = HttpUtils.getUrlImage(&backdropPath)
-            self.moviesResponse.append(object)
-            self.movieList.append(DetailsModel(
-                id: Int(object.id!),
-                movieShowcaseBanner: backdrop,
-                movieImage: banner,
-                favoriteImage:  CoreDataUtils.checkFavorited(movieTitle: object.title!) ? UIImage(systemName: "heart.fill")! : UIImage(systemName: "heart")!,
-                rate: String(object.vote_average!),
-                title: object.title!,
-                genre: genres,
-                country: "Não informado",
-                description: object.overview!,
-                evaluatedBy: "IMDB",
-                movieDuration: 000,
-                numberOfVotes: object.vote_count!))
-        }
+            self.movieList.removeAll()
+            Utils.populateWithMovies(data: data, filterDictionary: &self.filterHeaderAux, moviesArray: &self.movieList)
             self.initializeTableView()
             self.loadingView.isHidden = true
         }

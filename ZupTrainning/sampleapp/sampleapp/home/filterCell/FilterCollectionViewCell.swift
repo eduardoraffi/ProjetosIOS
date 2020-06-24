@@ -9,7 +9,7 @@
 import UIKit
 
 class FilterCollectionViewCell: UICollectionViewCell {
-
+    
     @IBOutlet weak var filterBackView: UIView!
     @IBOutlet weak var filterLabel: UILabel!
     override var isSelected: Bool {
@@ -39,5 +39,4 @@ class FilterCollectionViewCell: UICollectionViewCell {
             filterBackView.backgroundColor = .clear
         }
     }
-    
 }

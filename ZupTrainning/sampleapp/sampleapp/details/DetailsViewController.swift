@@ -30,10 +30,10 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var topView: UIView!
     
     let kNibName = "HomeCardViewCell"
-    var details: DetailsModel! = nil
-    var moviesData: [DetailsModel] = []
-    var filterHeaderAux: [Int : String] = [:]
-    var moviesResponse: [MoviesResponse.Movie] = []
+    var details: MoviesResponseModel?
+    var moviesData: [MoviesResponseModel]?
+    var filterHeaderAux: [Int : String]?
+    var similarMoviesResponse: [MoviesResponseModel] = []
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -46,62 +46,57 @@ class DetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         initializeGestures()
-        
         populateView()
-        
-    }
-    private func genresRequest(){
-        HttpUtils.requestTask(HttpUtils.FILTER_URL) { (genresModel: GenreModel) in
-            self.populateGenreList(genresModel)
-        }
     }
     
-    private func populateGenreList(_ data: GenreModel){
-        for genre in data.genres{
-            self.filterHeaderAux.updateValue(genre.name, forKey: genre.id)
-        }
-        similarMoviesRequest()
+    private func populateView(){
+        bannerImageView.image = details?.bannerImage
+        favoriteImageView.image = CoreDataUtils.checkFavorited(movieTitle: details!.title) ? UIImage(systemName: "heart.fill")! : UIImage(systemName: "heart")!
+        posterImageView.image = details?.posterImage
+        titleLabel.text = details?.title
+        genreLabel.text = details?.genresToString
+        countrygenreLabel.text = details?.country
+        ratingTextField.text = String(details!.vote_average)
+        ratingAverageLabel.text = "\(String(details!.vote_average))/10"
+        durationTimeLabel.text = "\(details!.movieDuration) min"
+        descriptionTextView.text = details?.overview
+        voteNumberLabel.text = "Quantidade de votos: \(String(details!.vote_count))"
+        moreOptionsLabel.text = "Opções semelhantes:"
     }
     
     private func similarMoviesRequest(){
-        HttpUtils.requestTask("\(HttpUtils.SIMILAR_URL1)\(details.id)\(HttpUtils.SIMILAR_URL2)") { (response: MoviesResponse) in
+        HttpUtils.requestTask("\(HttpUtils.SIMILAR_URL1)\(details!.id)\(HttpUtils.SIMILAR_URL2)") { (response: MoviesResponse) in
             self.populateMoviesList(response)
         }
     }
     
     private func populateMoviesList(_ data: MoviesResponse) {
         DispatchQueue.main.async {
-
-        for object in data.results{
-            var genres: String = ""
-            for id in object.genre_ids!{
-                genres += (self.filterHeaderAux[id] ?? "")
-                genres += ", "
-            }
-            genres.removeLast(2)
-            let banner: UIImage
-            let backdrop: UIImage
-            var backdropPath = object.backdrop_path ?? "/"
-            var posterPath = object.poster_path ?? "/"
-            
-            banner = HttpUtils.getUrlImage(&posterPath)
-            backdrop = HttpUtils.getUrlImage(&backdropPath)
-            self.moviesResponse.append(object)
-            self.moviesData.append(DetailsModel(
-                id: Int(object.id!),
-                movieShowcaseBanner: backdrop,
-                movieImage: banner,
-                favoriteImage:  CoreDataUtils.checkFavorited(movieTitle: object.title!) ? UIImage(systemName: "heart.fill")! : UIImage(systemName: "heart")!,
-                rate: String(object.vote_average!),
-                title: object.title!,
-                genre: genres,
-                country: "Não informado",
-                description: object.overview!,
-                evaluatedBy: "IMDB",
-                movieDuration: 000,
-                numberOfVotes: object.vote_count!))
-        }
+            Utils.populateWithMovies(data: data, filterDictionary: &(self.filterHeaderAux)!, moviesArray: &self.similarMoviesResponse)
             self.populateSimilar()
+        }
+    }
+    
+    private func populateSimilar(){
+        moreOptionsStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
+        for object in moviesData![0..<5] {
+            if !(object.title == details!.title) {
+                let xib = Bundle.main.loadNibNamed("DetailsView", owner: self, options: nil)?.first as! DetailsView
+                xib.bannerImageView.image = object.bannerImage
+                xib.gradeTextfield.text = String(object.vote_average)
+                xib.titleTextField.text = object.title
+                xib.favoriteImageView.image = CoreDataUtils.checkFavorited(movieTitle: object.title) ? UIImage(systemName: "heart.fill")! : UIImage(systemName: "heart")!
+                xib.genreTextField.text = object.genresToString
+                xib.countryTextField.text = object.country
+                xib.detailsTextView.text = object.overview
+                
+                let gesture = CustomTapRecognizer.init(target: self, action: #selector(favoriteTapped(gesture:)))
+                gesture.movieFav = object
+                xib.favoriteImageView.addGestureRecognizer(gesture)
+                xib.favoriteImageView.isUserInteractionEnabled = true
+                
+                moreOptionsStackView.addArrangedSubview(xib)
+            }
         }
     }
     
@@ -109,54 +104,25 @@ class DetailsViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.backTapped))
         backArrowImageView.addGestureRecognizer(tap)
         backArrowImageView.isUserInteractionEnabled = true
+        let gesture = CustomTapRecognizer.init(target: self, action: #selector(favoriteTapped(gesture:)))
+        favoriteImageView.addGestureRecognizer(gesture)
     }
     
     @objc private func backTapped(){
         self.navigationController?.popViewController(animated: true)
     }
     
-    private func populateSimilar(){
-        for object in moviesData[0..<5] {
-            if !(object.title == details.title) {
-                let xib = Bundle.main.loadNibNamed("DetailsView", owner: self, options: nil)?.first as! DetailsView
-                xib.bannerImageView.image = object.movieImage
-                xib.gradeTextfield.text = object.rate
-                xib.titleTextField.text = object.title
-                xib.favoriteImageView.image = object.favoriteImage
-                xib.genreTextField.text = object.genre
-                xib.countryTextField.text = object.country
-                xib.detailsTextView.text = object.description
-                
-                moreOptionsStackView.addArrangedSubview(xib)
-            }
-        }
-    }
-    
-    private func populateView(){
-        bannerImageView.image = details.movieShowcaseBanner
-        favoriteImageView.image = details.favoriteImage
-        posterImageView.image = details.movieImage
-        titleLabel.text = details.title
-        genreLabel.text = details.genre
-        countrygenreLabel.text = details.country
-        ratingTextField.text = details.rate
-        ratingAverageLabel.text = details.rate + "/10"
-        durationTimeLabel.text = "\(details.movieDuration) min"
-        descriptionTextView.text = details.description
-        voteNumberLabel.text = "Quantidade de votos: \(String(details.numberOfVotes))"
-        moreOptionsLabel.text = "Opções semelhantes:"
-    }
-    
     @objc private func favoriteTapped(gesture: CustomTapRecognizer){
         CoreDataUtils.save(movie: gesture.movieFav!)
+        self.populateSimilar()
     }
 }
 
 extension UIView {
     func roundCorners(_ corners:UIRectCorner, radius: CGFloat) {
-    let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
-    let mask = CAShapeLayer()
-    mask.path = path.cgPath
-    self.layer.mask = mask
-  }
+        let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        let mask = CAShapeLayer()
+        mask.path = path.cgPath
+        self.layer.mask = mask
+    }
 }

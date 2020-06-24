@@ -11,28 +11,15 @@ import UIKit
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
     
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return movieList.count;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = homeTableView.dequeueReusableCell(withIdentifier: kNibName, for: indexPath) as! HomeCardViewCell
-        
-        cell.selectionStyle = .none
-        let movie = moviesResponse.filter({($0.title?.contains(movieList[indexPath.row].title))!})
-
-        cell.movieBannerImageView.image = movieList[indexPath.row].movieImage
-        cell.movieRatingTextField.text = movieList[indexPath.row].rate
-        
-        cell.movieTitleTextField.text = movieList[indexPath.row].title
-        cell.favoriteIconImageView.image = CoreDataUtils.checkFavorited(movieTitle: (movie.first?.title)!) ? UIImage(systemName: "heart.fill")! : UIImage(systemName: "heart")!
-        cell.movieGenreTextField.text = movieList[indexPath.row].genre
-        cell.movieCountryTextField.text = movieList[indexPath.row].country
-        cell.movieDescriptionTextView.text = movieList[indexPath.row].description
+        let cell = Utils.instantiateTableViewCell(tableView: homeTableView, indexPath: indexPath, moviesList: movieList)
         
         let gesture = CustomTapRecognizer.init(target: self, action: #selector(favoriteTapped(gesture:)))
-        gesture.movieFav = movie.first!
+        gesture.movieFav = movieList[indexPath.row]
         cell.favoriteIconImageView.addGestureRecognizer(gesture)
         cell.favoriteIconImageView.isUserInteractionEnabled = true
         
@@ -40,13 +27,12 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let rowDetails = movieList[indexPath.row]
-        
         let storyboard = UIStoryboard(name: "Details", bundle: nil)
         
         let secondVC = storyboard.instantiateViewController(withIdentifier: "DetailsStoryboard") as? DetailsViewController
-        secondVC?.details = rowDetails
+        secondVC?.details = movieList[indexPath.row]
         secondVC?.moviesData = movieList
+        secondVC?.filterHeaderAux = filterHeaderAux
         self.navigationController?.show(secondVC!, sender: self)
     }
     
@@ -55,5 +41,3 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
         homeTableView.reloadData()
     }
 }
-
-

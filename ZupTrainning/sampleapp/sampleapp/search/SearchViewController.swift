@@ -15,8 +15,7 @@ class SearchViewController: UIViewController{
     @IBOutlet weak var searchBar: UISearchBar!
     
     let kNibName = "HomeCardViewCell"
-    var searchResults : [DetailsModel] = []
-    var searchMoviesResponse : [MoviesResponse.Movie] = []
+    var searchMoviesResponse : [MoviesResponseModel] = []
     var filterHeaderAux: [Int : String] = [:]
     
     override func viewDidLoad() {
@@ -33,10 +32,8 @@ class SearchViewController: UIViewController{
     func initializeTableView(){
         searchTableView.register(UINib.init(nibName: kNibName, bundle: nil), forCellReuseIdentifier: kNibName)
         searchTableView.backgroundColor = .clear
-        
         searchTableView.reloadData()
     }
-    
 }
 
 
@@ -61,40 +58,8 @@ extension SearchViewController: UISearchBarDelegate {
     }
     
     func getApiItems(_ data: MoviesResponse){
-        searchResults.removeAll()
-        for object in data.results{
-            var genres: String = ""
-            for id in object.genre_ids!{
-                genres += (self.filterHeaderAux[id] ?? "")
-                genres += ", "
-            }
-            if genres.count > 2 {
-                genres.removeLast(2)
-            } else {
-                genres = "Sem informação"
-            }
-            let banner: UIImage
-            let backdrop: UIImage
-            var backdropPath = object.backdrop_path ?? "/"
-            var posterPath = object.poster_path ?? "/"
-            
-            banner = HttpUtils.getUrlImage(&posterPath)
-            backdrop = HttpUtils.getUrlImage(&backdropPath)
-            self.searchMoviesResponse.append(object)
-            self.searchResults.append(DetailsModel(
-                id: Int(object.id!),
-                movieShowcaseBanner: backdrop,
-                movieImage: banner,
-                favoriteImage: CoreDataUtils.checkFavorited(movieTitle: object.title!) ? UIImage(systemName: "heart.fill")! : UIImage(systemName: "heart")!,
-                rate: String(object.vote_average!),
-                title: object.title!,
-                genre: genres,
-                country: "Não informado",
-                description: object.overview!,
-                evaluatedBy: "IMDB",
-                movieDuration: 000,
-                numberOfVotes: object.vote_count!))
-        }
+        searchMoviesResponse.removeAll()
+        Utils.populateWithMovies(data: data, filterDictionary: &self.filterHeaderAux, moviesArray: &self.searchMoviesResponse)
     }
     
     private func genresRequest(_ searchText: String){
@@ -103,7 +68,6 @@ extension SearchViewController: UISearchBarDelegate {
             DispatchQueue.main.async {
                 self.moviesRequest("\(HttpUtils.SEARCH_URL)\(searchText)&")
             }
-            
         }
     }
     

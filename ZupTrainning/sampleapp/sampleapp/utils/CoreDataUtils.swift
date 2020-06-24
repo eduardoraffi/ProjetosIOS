@@ -14,8 +14,8 @@ class CoreDataUtils {
     
     static var favoritesData: [NSManagedObject] = []
     
-    static func save(movie: MoviesResponse.Movie) {
-        if !checkFavorited(movieTitle: movie.title!) {
+    static func save(movie: MoviesResponseModel) {
+        if !checkFavorited(movieTitle: movie.title) {
             guard let appDelegate =
                 UIApplication.shared.delegate as? AppDelegate else {
                     return
@@ -40,6 +40,7 @@ class CoreDataUtils {
             favorites.setValue(movie.title, forKey: "title")
             favorites.setValue(movie.vote_count, forKey: "vote_count")
             favorites.setValue(movie.vote_average, forKey: "vote_average")
+            favorites.setValue(movie.genresToString, forKey: "genreToString")
             
             do {
                 favoritesData.append(favorites)
@@ -48,7 +49,7 @@ class CoreDataUtils {
                 print("Could not save. \(error), \(error.userInfo)")
             }
         } else {
-            deleteData(movie.title!)
+            deleteData(movie.title)
         }
     }
     
@@ -71,7 +72,7 @@ class CoreDataUtils {
                 }
             }
             try managedContext.save()
-
+            
         } catch {
             print(error.localizedDescription)
         }
@@ -108,7 +109,7 @@ class CoreDataUtils {
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Favorites")
         do {
             let objectList = try managedContext.fetch(fetchRequest)
-
+            
             for managedObject in objectList {
                 if let managedObjectData: NSManagedObject = managedObject as? NSManagedObject {
                     managedContext.delete(managedObjectData)
